@@ -8,7 +8,7 @@ import org.jetbrains.annotations.NotNull;
 @Entity
 public class Customer {
     @NotNull
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     public int custId;
     public String password, confirmPassword, firstname, lastname, address, city, postalCode, email;
 

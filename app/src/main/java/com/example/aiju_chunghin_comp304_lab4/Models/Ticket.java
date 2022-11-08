@@ -10,7 +10,7 @@ import java.util.Date;
 @Entity
 public class Ticket {
     @NotNull
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     public int ticketId;
 
     public int custId, movieId, numberOfTickets;

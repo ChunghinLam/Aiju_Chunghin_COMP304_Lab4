@@ -6,14 +6,14 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
-import com.example.aiju_chunghin_comp304_lab4.Models.Customer;
+import com.example.aiju_chunghin_comp304_lab4.Models.Ticket;
 
 import java.util.List;
 
 @Dao
 public interface TicketDAO {
     @Query("Select * from Ticket")
-    List<Customer> getTicketList();
+    List<Ticket> getTicketList();
 
     @Insert
     public void insertTicket();

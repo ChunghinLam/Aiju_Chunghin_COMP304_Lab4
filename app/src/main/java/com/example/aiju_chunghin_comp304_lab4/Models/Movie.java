@@ -8,7 +8,7 @@ import org.jetbrains.annotations.NotNull;
 @Entity
 public class Movie {
     @NotNull
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     public int movieId;
 
     public String movieName;

@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Aiju_ChungHin_COMP304_Lab4</string>
+
+    <string name="btnLogin">Login</string>
+    <string name="btnRegister">Register</string>
+
 </resources>
