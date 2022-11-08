@@ -2,6 +2,7 @@ package com.example.aiju_chunghin_comp304_lab4.Models;
 
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
+import androidx.room.TypeConverter;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -15,9 +16,9 @@ public class Ticket {
 
     public int custId, movieId, numberOfTickets;
 
-    public Date showDate;
+    public long showDate;
 
-    public Ticket(int ticketId, int custId, int movieId, int numberOfTickets, Date showDate, double price) {
+    public Ticket(int ticketId, int custId, int movieId, int numberOfTickets, long showDate, double price) {
         this.ticketId = ticketId;
         this.custId = custId;
         this.movieId = movieId;
@@ -59,11 +60,11 @@ public class Ticket {
     }
 
     public Date getShowDate() {
-        return showDate;
+        return MyTypeConverters.dateFromTimestamp(showDate);
     }
 
     public void setShowDate(Date showDate) {
-        this.showDate = showDate;
+        this.showDate = MyTypeConverters.dateToTimestamp(showDate);
     }
 
     public double getPrice() {
@@ -75,4 +76,13 @@ public class Ticket {
     }
 
     public double price;
+
+    public static class MyTypeConverters {
+        @TypeConverter
+        public static Date dateFromTimestamp(Long value) {
+            return value == null ? null : new Date(value); }
+        @TypeConverter
+        public static Long dateToTimestamp(Date date) {
+            return date == null ? null : date.getTime(); }
+    }
 }

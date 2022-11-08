@@ -3,6 +3,8 @@ package com.example.aiju_chunghin_comp304_lab4;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
+import androidx.room.TypeConverters;
+
 import android.content.Context;
 
 import com.example.aiju_chunghin_comp304_lab4.Models.Customer;
@@ -14,6 +16,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 @Database(entities = {Customer.class, Movie.class, Ticket.class}, version = 1)
+@TypeConverters({Ticket.MyTypeConverters.class})
 public abstract class MovieDatabase extends RoomDatabase {
     private static final String DB_NAME = "MOVIE_DB";
     private static final int NUMBER_OF_THREADS = 4;
