@@ -1,6 +1,10 @@
-package com.example.aiju_chunghin_comp304_lab4;
+package com.example.aiju_chunghin_comp304_lab4.DAOs;
 
-import androidx.room.*;
+import androidx.room.Dao;
+import androidx.room.Delete;
+import androidx.room.Insert;
+import androidx.room.Query;
+import androidx.room.Update;
 
 import com.example.aiju_chunghin_comp304_lab4.Models.Customer;
 
