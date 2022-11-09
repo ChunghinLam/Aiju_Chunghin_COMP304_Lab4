@@ -89,7 +89,8 @@ public class MainActivity extends AppCompatActivity {
         Button btnLogin = findViewById(R.id.btnLogin);
         btnLogin.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                // do sth
+                Intent login = new Intent(MainActivity.this, LoginActivity.class);
+                startActivity(login);
             }
         });
 
@@ -101,4 +102,5 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
 }

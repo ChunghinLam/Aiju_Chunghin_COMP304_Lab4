@@ -11,4 +11,14 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
     }
+
+    // Authentication method
+    private boolean authentication(){
+        //If matches id/password stored in db
+        if (true)
+            return true;
+        else
+            return false;
+
+    }
 }
