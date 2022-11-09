@@ -11,4 +11,14 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
     }
+
+    // Authentication method
+    private boolean authentication(){
+        //TODO: How do we check the eligibility? 1. if matches password stored in db, 2. authentication api
+        if (true)
+            return true;
+        else
+            return false;
+
+    }
 }
