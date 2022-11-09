@@ -3,5 +3,7 @@
 
     <string name="btnLogin">Login</string>
     <string name="btnRegister">Register</string>
+    <string name="id_label">ID: </string>
+    <string name="input_hint">Type here</string>
 
 </resources>
