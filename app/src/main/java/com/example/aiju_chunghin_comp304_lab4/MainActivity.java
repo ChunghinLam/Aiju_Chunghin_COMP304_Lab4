@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -30,24 +31,42 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // load movies to DB
-//        MovieDatabase movieDb = MovieDatabase.getInstance(getApplicationContext());
-
-//        MovieViewModel movieViewModel = new ViewModelProvider(this).get(MovieViewModel.class);
-
         List<Movie> movieList = null;
-        MovieViewModel model = new ViewModelProvider(this).get(MovieViewModel.class);
-//        Movie m = new Movie("namenamename"); // testing
-//        model.insert(m);
+        try {
+            MovieViewModel model = new ViewModelProvider(this).get(MovieViewModel.class);
 
-        model.getAllMovies().observe(this, new Observer<List<Movie>>() {
-            @Override
-            public void onChanged(List<Movie> movieList) {
-                for (Movie movie : movieList) {
-                    Toast.makeText(getApplicationContext(),movie.movieName, Toast.LENGTH_SHORT).show();
-
+            // clear the table before adding everytime
+            AsyncTask.execute(new Runnable() {
+                @Override
+                public void run() {
+                    model.deleteAllMovies();
                 }
-            }
-        });
+            });
+
+            Movie m1 = new Movie("movie 1"); // testing
+            Movie m2 = new Movie("movie 2"); // testing
+
+            AsyncTask.execute(new Runnable() {
+                @Override
+                public void run() {
+                    model.insert(m1);
+                    model.insert(m2);
+                }
+            });
+
+            model.getAllMovies().observe(this, new Observer<List<Movie>>() {
+                @Override
+                public void onChanged(List<Movie> movieList) {
+                    for (Movie movie : movieList) {
+                        Toast.makeText(getApplicationContext(), movie.movieName, Toast.LENGTH_SHORT).show();
+//                        movieList.add(movie);
+                    }
+                }
+            });
+        }
+        catch (Exception ex) {
+            Toast.makeText(getApplicationContext(), ex.getMessage(), Toast.LENGTH_LONG).show();
+        }
 
         // if is login, show username, else, show welcome guest
         TextView tvWelcome = findViewById(R.id.tvWelcome);
@@ -89,7 +108,8 @@ public class MainActivity extends AppCompatActivity {
         Button btnLogin = findViewById(R.id.btnLogin);
         btnLogin.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                // do sth
+                Intent login = new Intent(MainActivity.this, LoginActivity.class);
+                startActivity(login);
             }
         });
 
@@ -101,4 +121,5 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
 }

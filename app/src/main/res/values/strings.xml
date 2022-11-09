@@ -5,5 +5,40 @@
     <string name="str_guest">Guest</string>
     <string name="btnLogin">Login</string>
     <string name="btnRegister">Register</string>
+    <string name="id_label">ID: </string>
+    <string name="input_hint">Type here</string>
 
+    <!-- messages -->
+    <string name="msg_select_showtime">Please select a showtime</string>
+    <string name="msg_select_tickettype">Please select the number of ticket(s) to purchase</string>
+    <string name="msg_select_personalInfo">Please provide your personal information</string>
+    <string name="msg_confirmSelect_showtime">Your selected showtime: </string>
+    <string name="msg_confirmSelect_ticket">Your selected ticket(s): </string>
+    <string name="msg_confirm_ticket">Confirm Your Ticket</string>
+    <string name="msg_must_more_than_zero_ticket">Please purchase at least one ticket to proceed.</string>
+    <string name="msg_must_select_a_showtime">Please select a showtime to proceed.</string>
+    <string name="btn_msg_next">Next</string>
+    <string name="btn_msg_submit">Confirm Your Ticket</string>
+    <string name="btn_msg_cancel">Cancel</string>
+
+    <!-- movie name -->
+    <string name="movie_woman_king">The Woman King</string>
+    <string name="movie_maverick">Top Gun: Maverick</string>
+    <string name="movie_pearl">Pearl</string>
+    <string name="movie_minions">Minions: The Rise of Gru</string>
+    <string name="movie_bullet_train">Bullet Train</string>
+
+    <!-- movie showtime -->
+    <string name="showtime_1250">12:50 p.m.</string>
+    <string name="showtime_1415">2:15 p.m.</string>
+    <string name="showtime_1645">4:45 p.m.</string>
+    <string name="showtime_1850">6:50 p.m.</string>
+    <string name="showtime_2050">8:50 p.m.</string>
+
+    <!-- personal info -->
+    <string name="checkout_firstname">First Name</string>
+    <string name="checkout_lastname">Last Name</string>
+    <string name="checkout_address">Address</string>
+    <string name="checkout_phone">Phone Number</string>
+    <string name="checkout_email">Email</string>
 </resources>
