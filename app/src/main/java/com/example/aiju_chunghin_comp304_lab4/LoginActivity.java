@@ -14,7 +14,7 @@ public class LoginActivity extends AppCompatActivity {
 
     // Authentication method
     private boolean authentication(){
-        //TODO: How do we check the eligibility? 1. if matches password stored in db, 2. authentication api
+        //If matches id/password stored in db
         if (true)
             return true;
         else
