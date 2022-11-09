@@ -77,8 +77,8 @@ public class MainActivity extends AppCompatActivity {
             });
         }
         catch (Exception ex) {
-            TextView tvErrorMsg = findViewById(R.id.tvErrorMsg);
-            tvErrorMsg.setText(ex.getMessage());
+//            TextView tvErrorMsg = findViewById(R.id.tvErrorMsg);
+//            tvErrorMsg.setText(ex.getMessage());
         }
 
         // if is login, show username, else, show welcome guest
