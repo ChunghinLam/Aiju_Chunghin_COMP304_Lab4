@@ -2,6 +2,7 @@ package com.example.aiju_chunghin_comp304_lab4;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -21,6 +22,7 @@ import com.example.aiju_chunghin_comp304_lab4.DAOs.MovieDAO;
 import com.example.aiju_chunghin_comp304_lab4.Models.Movie;
 import com.example.aiju_chunghin_comp304_lab4.ViewModels.MovieViewModel;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -31,41 +33,52 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // load movies to DB
-        List<Movie> movieList = null;
+        Movie m1 = new Movie(getResources().getString(R.string.movie_bullettrain));
+        Movie m2 = new Movie(getResources().getString(R.string.movie_topgun));
+        Movie m3 = new Movie(getResources().getString(R.string.movie_minions));
+        Movie m4 = new Movie(getResources().getString(R.string.movie_pearl));
+        Movie m5 = new Movie(getResources().getString(R.string.movie_womanking));
+
         try {
             MovieViewModel model = new ViewModelProvider(this).get(MovieViewModel.class);
 
-            // clear the table before adding everytime
+            // clear everything before adding
             AsyncTask.execute(new Runnable() {
                 @Override
                 public void run() {
                     model.deleteAllMovies();
-                }
-            });
 
-            Movie m1 = new Movie("movie 1"); // testing
-            Movie m2 = new Movie("movie 2"); // testing
-
-            AsyncTask.execute(new Runnable() {
-                @Override
-                public void run() {
                     model.insert(m1);
                     model.insert(m2);
+                    model.insert(m3);
+                    model.insert(m4);
+                    model.insert(m5);
                 }
             });
 
+            // movie list handling
+            ListView movieListView = findViewById(R.id.lvMovieList);
+//            LiveData<List<Movie>> movieList = model.getAllMovies();
             model.getAllMovies().observe(this, new Observer<List<Movie>>() {
+
                 @Override
-                public void onChanged(List<Movie> movieList) {
-                    for (Movie movie : movieList) {
-                        Toast.makeText(getApplicationContext(), movie.movieName, Toast.LENGTH_SHORT).show();
-//                        movieList.add(movie);
-                    }
+                public void onChanged(@Nullable List<Movie> list) {
+                    MovieAdapter adapter = new MovieAdapter(getApplicationContext(), new ArrayList<>(list));
+
+//                    ArrayAdapter<Movie> arr = new ArrayAdapter<>(getApplicationContext(), R.layout.movie_row,
+//                            R.id.tvMovieName, new ArrayList<>(list));
+
+//                    ArrayAdapter<Movie> arr = new ArrayAdapter<>(getApplicationContext(),
+//                        R.layout.movie_row,
+//                        new ArrayList<>(list));
+
+                    movieListView.setAdapter(adapter);
                 }
             });
         }
         catch (Exception ex) {
-            Toast.makeText(getApplicationContext(), ex.getMessage(), Toast.LENGTH_LONG).show();
+            TextView tvErrorMsg = findViewById(R.id.tvErrorMsg);
+            tvErrorMsg.setText(ex.getMessage());
         }
 
         // if is login, show username, else, show welcome guest
@@ -76,14 +89,7 @@ public class MainActivity extends AppCompatActivity {
                 (pref.getString("username", null) == null ?
                 getResources().getString(R.string.str_guest) : pref.getString("username", null)));
 
-        // movie list handling
-        ListView movieListView = findViewById(R.id.lvMovieList);
-        ArrayAdapter<Movie> arr = new ArrayAdapter<Movie>(
-                this,
-                androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,
-                movieList);
 
-//        movieListView.setAdapter(arr);
 //        movieListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 //            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 ////                String value = (String)parent.getItemAtPosition(position);

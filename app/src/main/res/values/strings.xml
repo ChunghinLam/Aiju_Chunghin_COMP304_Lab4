@@ -22,11 +22,11 @@
     <string name="btn_msg_cancel">Cancel</string>
 
     <!-- movie name -->
-    <string name="movie_woman_king">The Woman King</string>
-    <string name="movie_maverick">Top Gun: Maverick</string>
+    <string name="movie_womanking">The Woman King</string>
+    <string name="movie_topgun">Top Gun: Maverick</string>
     <string name="movie_pearl">Pearl</string>
     <string name="movie_minions">Minions: The Rise of Gru</string>
-    <string name="movie_bullet_train">Bullet Train</string>
+    <string name="movie_bullettrain">Bullet Train</string>
 
     <!-- movie showtime -->
     <string name="showtime_1250">12:50 p.m.</string>
