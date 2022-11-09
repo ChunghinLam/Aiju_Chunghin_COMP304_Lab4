@@ -5,6 +5,8 @@ import androidx.room.PrimaryKey;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.UUID;
+
 @Entity
 public class Customer {
     @NotNull
@@ -13,6 +15,7 @@ public class Customer {
     public String password, confirmPassword, firstname, lastname, address, city, postalCode, email;
 
     public Customer(String password, String confirmPassword, String firstname, String lastname, String address, String city, String postalCode, String email) {
+        this.custId = (int) Math.random();
         this.password = password;
         this.confirmPassword = confirmPassword;
         this.firstname = firstname;
