@@ -56,6 +56,14 @@ public class MovieAdapter extends ArrayAdapter<Movie> {
         TextView tvShowDate = (TextView) listItem.findViewById(R.id.tvShowDate);
         TextView tvShowTime = (TextView) listItem.findViewById(R.id.tvShowTime);
 
+        String concatShowtime = mContext.getString(R.string.showtime_1250) + " " +
+                mContext.getString(R.string.showtime_1415) + " " +
+                mContext.getString(R.string.showtime_1645) + "\n" +
+                mContext.getString(R.string.showtime_1850) + " " +
+                mContext.getString(R.string.showtime_2050);
+
+                tvShowDate.setText(mContext.getString(R.string.showdate_1113));
+        tvShowTime.setText(concatShowtime);
         return listItem;
     }
 }

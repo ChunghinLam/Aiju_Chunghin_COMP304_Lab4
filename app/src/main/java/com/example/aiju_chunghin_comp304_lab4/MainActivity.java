@@ -73,6 +73,14 @@ public class MainActivity extends AppCompatActivity {
 //                        new ArrayList<>(list));
 
                     movieListView.setAdapter(adapter);
+                    movieListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                            String value = (String)parent.getItemAtPosition(position);
+                            Intent intent = new Intent(MainActivity.this, TicketActivity.class);
+                            intent.putExtra("movieId", position);
+                            startActivity(intent);
+                        }
+                    });
                 }
             });
         }
@@ -88,27 +96,6 @@ public class MainActivity extends AppCompatActivity {
         tvWelcome.setText(tvWelcome.getText() + " " +
                 (pref.getString("username", null) == null ?
                 getResources().getString(R.string.str_guest) : pref.getString("username", null)));
-
-
-//        movieListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-////                String value = (String)parent.getItemAtPosition(position);
-//                Intent intent = new Intent();
-//
-////                switch (position) {
-////                    case 0: // Task 1
-////                        intent = new Intent(MainActivity.this, DrawLineActivity.class);
-////                        break;
-////                    case 1: // Task 2
-////                        intent = new Intent(MainActivity.this, FrameActivity.class);
-////                        break;
-////                    case 2: // Task 3
-////                        intent = new Intent(MainActivity.this, AnimationActivity.class);
-////                        break;
-////                }
-//                startActivity(intent);
-//            }
-//        });
 
         // login button handling
         Button btnLogin = findViewById(R.id.btnLogin);

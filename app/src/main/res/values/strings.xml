@@ -28,7 +28,16 @@
     <string name="movie_minions">Minions: The Rise of Gru</string>
     <string name="movie_bullettrain">Bullet Train</string>
 
+    <!-- movie showdate -->
+    <string name="showdate_1113">Nov 13</string>
+    <string name="showdate_1114">Nov 14</string>
+    <string name="showdate_1115">Nov 15</string>
+
     <!-- movie showtime -->
+    <string-array name="showtime">
+        <item>12:50 p.m.</item>
+    </string-array>
+
     <string name="showtime_1250">12:50 p.m.</string>
     <string name="showtime_1415">2:15 p.m.</string>
     <string name="showtime_1645">4:45 p.m.</string>
