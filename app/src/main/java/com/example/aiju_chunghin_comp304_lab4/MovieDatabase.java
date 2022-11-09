@@ -7,6 +7,9 @@ import androidx.room.TypeConverters;
 
 import android.content.Context;
 
+import com.example.aiju_chunghin_comp304_lab4.DAOs.CustomerDAO;
+import com.example.aiju_chunghin_comp304_lab4.DAOs.MovieDAO;
+import com.example.aiju_chunghin_comp304_lab4.DAOs.TicketDAO;
 import com.example.aiju_chunghin_comp304_lab4.Models.Customer;
 import com.example.aiju_chunghin_comp304_lab4.Models.Movie;
 import com.example.aiju_chunghin_comp304_lab4.Models.Ticket;
@@ -22,18 +25,21 @@ public abstract class MovieDatabase extends RoomDatabase {
     private static final int NUMBER_OF_THREADS = 4;
     private static volatile MovieDatabase instance;
 
+    public abstract CustomerDAO customerDAO();
+    public abstract MovieDAO movieDAO();
+    public abstract TicketDAO ticketDAO();
+
     static final ExecutorService databaseWriteExecutor = Executors.newFixedThreadPool(NUMBER_OF_THREADS);
-    static MovieDatabase getInstance(final Context context) {
+    public static MovieDatabase getInstance(final Context context) {
         if (instance == null) {
             synchronized (MovieDatabase.class) {
                 if (instance == null) {
                     instance = Room.databaseBuilder(context.getApplicationContext(), MovieDatabase.class, DB_NAME)
-                            .fallbackToDestructiveMigration().build();
+                            .build();
                 }
             }
         }
 
         return instance;
     }
-
 }

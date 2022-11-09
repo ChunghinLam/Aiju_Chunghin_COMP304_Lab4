@@ -18,8 +18,7 @@ public class Ticket {
 
     public long showDate;
 
-    public Ticket(int ticketId, int custId, int movieId, int numberOfTickets, long showDate, double price) {
-        this.ticketId = ticketId;
+    public Ticket(int custId, int movieId, int numberOfTickets, long showDate, double price) {
         this.custId = custId;
         this.movieId = movieId;
         this.numberOfTickets = numberOfTickets;

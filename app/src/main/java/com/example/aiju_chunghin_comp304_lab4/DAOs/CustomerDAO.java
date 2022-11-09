@@ -16,11 +16,11 @@ public interface CustomerDAO {
     List<Customer> getCustomerList();
 
     @Insert
-    public void insertCustomer();
+    public void insertCustomer(Customer customer);
 
     @Update
-    public void updateCustomer();
+    public void updateCustomer(Customer customer);
 
     @Delete
-    public void deleteCustomer();
+    public void deleteCustomer(Customer customer);
 }

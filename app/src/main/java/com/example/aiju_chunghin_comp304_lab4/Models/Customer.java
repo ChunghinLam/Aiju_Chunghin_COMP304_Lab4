@@ -12,8 +12,7 @@ public class Customer {
     public int custId;
     public String password, confirmPassword, firstname, lastname, address, city, postalCode, email;
 
-    public Customer(int custId, String password, String confirmPassword, String firstname, String lastname, String address, String city, String postalCode, String email) {
-        this.custId = custId;
+    public Customer(String password, String confirmPassword, String firstname, String lastname, String address, String city, String postalCode, String email) {
         this.password = password;
         this.confirmPassword = confirmPassword;
         this.firstname = firstname;

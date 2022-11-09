@@ -16,11 +16,11 @@ public interface TicketDAO {
     List<Ticket> getTicketList();
 
     @Insert
-    public void insertTicket();
+    public void insertTicket(Ticket ticket);
 
     @Update
-    public void updateTicket();
+    public void updateTicket(Ticket ticket);
 
     @Delete
-    public void deleteTicket();
+    public void deleteTicket(Ticket ticket);
 }

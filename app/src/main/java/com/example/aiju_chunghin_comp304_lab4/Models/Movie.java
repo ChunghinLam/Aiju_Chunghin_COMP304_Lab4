@@ -13,8 +13,7 @@ public class Movie {
 
     public String movieName;
 
-    public Movie(int movieId, String movieName) {
-        this.movieId = movieId;
+    public Movie(String movieName) {
         this.movieName = movieName;
     }
 
