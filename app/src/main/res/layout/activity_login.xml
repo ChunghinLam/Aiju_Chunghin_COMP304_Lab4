@@ -7,28 +7,38 @@
     android:orientation="vertical"
     tools:context=".LoginActivity">
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="@dimen/input_width"
+            android:layout_height="@dimen/input_height">
 
-        <TextView
-            android:id="@+id/id_label"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/id_label" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/logAct_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/id_label" />
+        </com.google.android.material.textfield.TextInputLayout>
+
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="@dimen/input_width"
             android:layout_height="@dimen/input_height">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/logAct_pass"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:hint="@string/input_hint" />
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPassword"
+                android:hint="@string/pass_label" />
         </com.google.android.material.textfield.TextInputLayout>
 
-    </LinearLayout>
+    <Button
+        android:id="@+id/logAct_login_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:text="@string/btnLogin"/>
 
     <TextView
         android:id="@+id/debug_txtView"
