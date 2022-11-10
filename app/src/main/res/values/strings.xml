@@ -5,8 +5,10 @@
     <string name="str_guest">Guest</string>
     <string name="btnLogin">Login</string>
     <string name="btnRegister">Register</string>
-    <string name="id_label">ID: </string>
+    <string name="id_label">Your email address: </string>
+    <string name="pass_label">Password: </string>
     <string name="input_hint">Type here</string>
+    <string name="use_of_terms">As registered, we assume that you have read, understand, and agree on our use of terms.</string>
 
     <!-- messages -->
     <string name="msg_select_showtime">Please select a showtime</string>
@@ -48,6 +50,8 @@
     <string name="checkout_firstname">First Name</string>
     <string name="checkout_lastname">Last Name</string>
     <string name="checkout_address">Address</string>
+    <string name="checkout_city">City</string>
+    <string name="checkout_postal">Postal Code</string>
     <string name="checkout_phone">Phone Number</string>
     <string name="checkout_email">Email</string>
 </resources>

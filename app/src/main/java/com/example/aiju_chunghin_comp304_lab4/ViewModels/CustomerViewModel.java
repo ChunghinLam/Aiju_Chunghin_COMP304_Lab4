@@ -15,7 +15,7 @@ import java.util.List;
 public class CustomerViewModel extends AndroidViewModel {
     private CustomerRepository customerRepository;
     private LiveData<Integer> insertResult;
-    private List<Customer> allCustomers;
+    private LiveData<List<Customer>> allCustomers;
 
     public CustomerViewModel(@NotNull Application application) {
         super(application);
@@ -33,7 +33,7 @@ public class CustomerViewModel extends AndroidViewModel {
         return insertResult;
     }
     // Retrieve
-    public List<Customer> getAllCustomers(){
+    public LiveData<List<Customer>> getAllCustomers(){
         return allCustomers;
     }
     // Update

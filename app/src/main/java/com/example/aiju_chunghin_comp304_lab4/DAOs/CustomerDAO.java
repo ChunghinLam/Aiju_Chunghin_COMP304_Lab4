@@ -1,5 +1,6 @@
 package com.example.aiju_chunghin_comp304_lab4.DAOs;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
@@ -14,7 +15,7 @@ import java.util.List;
 @Dao
 public interface CustomerDAO {
     @Query("Select * from Customer")
-    List<Customer> getCustomerList();
+    LiveData<List<Customer>> getCustomerList();
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     public void insertCustomer(Customer customer);

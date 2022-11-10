@@ -27,19 +27,25 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        customerViewModel = new ViewModelProvider(this).get(CustomerViewModel.class);
+
         /* DEBUG USE */
         textView = findViewById(R.id.debug_txtView);
-        String temp = "";
         try {
-            // Observed stored data
-            //movieViewModel.getAllMovies();
-            for (Customer customer : customerViewModel.getAllCustomers()) {
-                temp += customer.getCustId();
+        customerViewModel.getAllCustomers().observe(this, new Observer<List<Customer>>() {
+            @Override
+            public void onChanged(List<Customer> customers) {
+                String output = "";
+                for (Customer customer : customers) {
+                    output += customer.getEmail() + ":" +
+                            customer.getPassword() +"\n";
+                }
+                textView.setText(output);
             }
-        } catch (Exception e){
-            temp = e.getMessage();
+        });}
+        catch (Exception e){
+            textView.setText(e.getMessage());
         }
-        textView.setText(temp);
 
 
     }

@@ -110,9 +110,9 @@ public class MainActivity extends AppCompatActivity {
         Button btnRegister = findViewById(R.id.btnRegister);
         btnRegister.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                // do sth
+                Intent register = new Intent(MainActivity.this, RegistrationActivity.class);
+                startActivity(register);
             }
         });
     }
-    // test commit to branch akinoshi
 }
