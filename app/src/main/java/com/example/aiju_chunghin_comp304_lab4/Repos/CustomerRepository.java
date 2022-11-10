@@ -14,7 +14,7 @@ import java.util.List;
 public class CustomerRepository {
     private final CustomerDAO customerDAO;
     private MutableLiveData<Integer> insertResult = new MutableLiveData<>();
-    private List<Customer> customerList;
+    private LiveData<List<Customer>> customerList;
 
     public CustomerRepository(Context context){
         MovieDatabase db = MovieDatabase.getInstance(context);
@@ -23,7 +23,7 @@ public class CustomerRepository {
     }
 
     // Read
-    public List<Customer> getAllCustomers(){
+    public LiveData<List<Customer>> getAllCustomers(){
         return customerList;
     }
     // Create
