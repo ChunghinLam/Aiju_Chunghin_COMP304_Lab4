@@ -2,4 +2,6 @@
 <resources>
     <dimen name="input_width">100pt</dimen>
     <dimen name="input_height">24pt</dimen>
+
+    <dimen name="inner_movie_poster_height">300dp</dimen>
 </resources>

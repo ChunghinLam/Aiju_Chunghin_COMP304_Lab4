@@ -1,9 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".TicketActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <ImageView
+        android:id="@+id/ivMovieAvatar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/inner_movie_poster_height"
+        android:src="@drawable/ic_launcher_foreground" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/msg_select_showtime" />
+
+    <RadioGroup
+        android:id="@+id/rgpShowtime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RadioButton
+            android:id="@+id/radio_1250"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/showtime_1250" />
+
+        <RadioButton
+            android:id="@+id/radio_1415"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/showtime_1415" />
+
+        <RadioButton
+            android:id="@+id/radio_1645"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/showtime_1645" />
+
+        <RadioButton
+            android:id="@+id/radio_1850"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/showtime_1850" />
+
+        <RadioButton
+            android:id="@+id/radio_2050"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/showtime_2050" />
+    </RadioGroup>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnCancel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_msg_cancel" />
+
+        <Button
+            android:id="@+id/btnNext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_msg_next" />
+    </LinearLayout>
+
+</LinearLayout>

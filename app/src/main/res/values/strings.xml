@@ -24,13 +24,22 @@
     <string name="btn_msg_cancel">Cancel</string>
 
     <!-- movie name -->
-    <string name="movie_woman_king">The Woman King</string>
-    <string name="movie_maverick">Top Gun: Maverick</string>
+    <string name="movie_womanking">The Woman King</string>
+    <string name="movie_topgun">Top Gun: Maverick</string>
     <string name="movie_pearl">Pearl</string>
     <string name="movie_minions">Minions: The Rise of Gru</string>
-    <string name="movie_bullet_train">Bullet Train</string>
+    <string name="movie_bullettrain">Bullet Train</string>
+
+    <!-- movie showdate -->
+    <string name="showdate_1113">Nov 13</string>
+    <string name="showdate_1114">Nov 14</string>
+    <string name="showdate_1115">Nov 15</string>
 
     <!-- movie showtime -->
+    <string-array name="showtime">
+        <item>12:50 p.m.</item>
+    </string-array>
+
     <string name="showtime_1250">12:50 p.m.</string>
     <string name="showtime_1415">2:15 p.m.</string>
     <string name="showtime_1645">4:45 p.m.</string>
