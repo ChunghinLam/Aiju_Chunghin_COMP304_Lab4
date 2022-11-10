@@ -11,7 +11,7 @@
     <string name="use_of_terms">As registered, we assume that you have read, understand, and agree on our use of terms.</string>
 
     <!-- messages -->
-    <string name="msg_select_showtime">Please select a showtime</string>
+    <string name="msg_select_showtime">Please select the number of tickets and showtime</string>
     <string name="msg_select_tickettype">Please select the number of ticket(s) to purchase</string>
     <string name="msg_select_personalInfo">Please provide your personal information</string>
     <string name="msg_confirmSelect_showtime">Your selected showtime: </string>
@@ -19,9 +19,10 @@
     <string name="msg_confirm_ticket">Confirm Your Ticket</string>
     <string name="msg_must_more_than_zero_ticket">Please purchase at least one ticket to proceed.</string>
     <string name="msg_must_select_a_showtime">Please select a showtime to proceed.</string>
-    <string name="btn_msg_next">Next</string>
-    <string name="btn_msg_submit">Confirm Your Ticket</string>
+    <string name="btn_msg_submit">Submit</string>
     <string name="btn_msg_cancel">Cancel</string>
+    <string name="msg_ticket_price">Price:</string>
+    <string name="msg_purchase_success">Purchase successfully!</string>
 
     <!-- movie name -->
     <string name="movie_womanking">The Woman King</string>
