@@ -91,11 +91,23 @@ public class MainActivity extends AppCompatActivity {
 
         // if is login, show username, else, show welcome guest
         TextView tvWelcome = findViewById(R.id.tvWelcome);
-        SharedPreferences pref = getApplicationContext().getSharedPreferences("pref", 0);
+//        SharedPreferences pref = getApplicationContext().getSharedPreferences("pref", 0);
+        SharedPreferences pref = getSharedPreferences("accountPref", MODE_PRIVATE);
 
-        tvWelcome.setText(tvWelcome.getText() + " " +
-                (pref.getString("username", null) == null ?
-                getResources().getString(R.string.str_guest) : pref.getString("username", null)));
+//        tvWelcome.setText(tvWelcome.getText() + " " +
+//                (pref.getString("accountPref", null) == null ?
+//                getResources().getString(R.string.str_guest) : pref.getString("accountPref", null)));
+
+        try {
+            if (!pref.contains("user")) {
+                pref.edit().putString("user", "Guest").commit();
+            }
+            else
+                Toast.makeText(getApplicationContext(), "Is not empty", Toast.LENGTH_SHORT).show();
+        } catch (Exception e){
+            Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+        }
+        tvWelcome.setText(tvWelcome.getText()+" "+pref.getString("user", null));
 
         // login button handling
         Button btnLogin = findViewById(R.id.btnLogin);

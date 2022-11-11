@@ -6,6 +6,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -100,6 +101,11 @@ public class LoginActivity extends AppCompatActivity {
                     if (email_bool && password_bool){
                         Toast.makeText(getApplicationContext(), "Passed!"+customer.getCustId(), Toast.LENGTH_LONG).show();
                         // Set who's current account in Shared Preference
+                        SharedPreferences pref = getSharedPreferences("accountPref", MODE_PRIVATE);
+                        SharedPreferences.Editor prefEditer = pref.edit();
+                        prefEditer.putString("user", customer.getEmail());
+                        prefEditer.commit();
+
                         // Move to Main Activity
                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                         startActivity(intent);
