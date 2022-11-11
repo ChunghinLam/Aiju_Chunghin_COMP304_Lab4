@@ -80,6 +80,9 @@ public class MainActivity extends AppCompatActivity {
 //                            String value = (String)parent.getItemAtPosition(position);
                             Intent intent = new Intent(MainActivity.this, TicketActivity.class);
                             intent.putExtra("movieId", position);
+
+                            String date = getApplicationContext().getString(R.string.showdate_1113);
+                            intent.putExtra("movieShowDate", date.toString());
                             startActivity(intent);
                         }
                     });
