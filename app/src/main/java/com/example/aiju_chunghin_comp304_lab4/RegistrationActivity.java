@@ -44,37 +44,44 @@ public class RegistrationActivity extends AppCompatActivity {
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                insertCustomer();
+                if (pass_txtView.getText().toString().equals(confPass_txtView.getText().toString()))
+                    insertCustomer();
                 //Toast.makeText(getApplicationContext(), "Clicked!", Toast.LENGTH_SHORT).show();
-
-                Intent move_back = new Intent(RegistrationActivity.this, MainActivity.class);
-                startActivity(move_back);
             }
         });
     }
 
     private void insertCustomer(){
-        customer = new Customer(
+        if(pass_txtView.getText().toString().equals(confPass_txtView.getText().toString())) {
+            customer = new Customer(
 //                "aaa","aaa","aaa","aaa","aaa","aaa","aaa","aaa"
-                pass_txtView.getText().toString(), confPass_txtView.getText().toString(),
-                fname_txtView.getText().toString(), lname_txtView.getText().toString(),
-                addr_txtView.getText().toString(), city_txtView.getText().toString(), postal_txtView.getText().toString(),
-                id_txtView.getText().toString()
-        );
-        if (customer != null) {
-            try {
-                AsyncTask.execute(new Runnable() {
-                    @Override
-                    public void run() {
-                        customerViewModel.insert(customer);
-                    }
-                });
-                //Toast.makeText(getApplicationContext(), customer.toString(), Toast.LENGTH_SHORT).show();
-            } catch (Exception e) {
-                Toast.makeText(getApplicationContext(), "insert error: "+e.getMessage(), Toast.LENGTH_LONG).show();
+                    (int) Math.random(),
+                    pass_txtView.getText().toString(), confPass_txtView.getText().toString(),
+                    fname_txtView.getText().toString(), lname_txtView.getText().toString(),
+                    addr_txtView.getText().toString(), city_txtView.getText().toString(), postal_txtView.getText().toString(),
+                    id_txtView.getText().toString()
+            );
+            if (customer != null) {
+                try {
+                    AsyncTask.execute(new Runnable() {
+                        @Override
+                        public void run() {
+                            customerViewModel.insert(customer);
+                        }
+                    });
+                    //Toast.makeText(getApplicationContext(), customer.toString(), Toast.LENGTH_SHORT).show();
+                } catch (Exception e) {
+                    Toast.makeText(getApplicationContext(), "insert error: " + e.getMessage(), Toast.LENGTH_LONG).show();
+                }
+            } else {
+                Toast.makeText(getApplicationContext(), "customer variable is NULL", Toast.LENGTH_LONG).show();
             }
-        } else{
-            Toast.makeText(getApplicationContext(), "customer variable is NULL", Toast.LENGTH_LONG).show();
+
+            Intent move_back = new Intent(this, MainActivity.class);
+            startActivity(move_back);
         }
+        else
+            Toast.makeText(getApplicationContext(), R.string.dif_pass_msg, Toast.LENGTH_LONG).show();
+
     }
 }

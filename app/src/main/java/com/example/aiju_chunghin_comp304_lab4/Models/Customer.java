@@ -14,8 +14,8 @@ public class Customer {
     public int custId;
     public String password, confirmPassword, firstname, lastname, address, city, postalCode, email;
 
-    public Customer(String password, String confirmPassword, String firstname, String lastname, String address, String city, String postalCode, String email) {
-        this.custId = (int) Math.random();
+    public Customer(Integer custId, String password, String confirmPassword, String firstname, String lastname, String address, String city, String postalCode, String email) {
+        this.custId = custId;
         this.password = password;
         this.confirmPassword = confirmPassword;
         this.firstname = firstname;

@@ -109,13 +109,20 @@ public class MainActivity extends AppCompatActivity {
 //        } catch (Exception e){
 //            Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
 //        }
-        tvWelcome.setText(tvWelcome.getText()+" "+pref.getString("user", "Guest"));
+        /* INNOVATION */
+        String userName = pref.getString("user_email", "Guest");
+//        Toast.makeText(getApplicationContext(), 1+userName, Toast.LENGTH_SHORT).show();
+        userName = userName.replaceAll("(.*)(@.*)", "$1");
+//        Toast.makeText(getApplicationContext(), 2+userName, Toast.LENGTH_SHORT).show();
+        tvWelcome.setText(tvWelcome.getText()+" "+userName);
+//        tvWelcome.setText(tvWelcome.getText()+" "+pref.getString("user_email", "Guest"));
 
+        /* INNOVATION */
         // View visibility control
         LinearLayout loginRegView = findViewById(R.id.main_guest);
         LinearLayout loggedView = findViewById(R.id.main_loggedin);
-        Toast.makeText(getApplicationContext(), ""+ pref.contains("user"), Toast.LENGTH_LONG).show();
-        if (pref.contains("user")) {
+//        Toast.makeText(getApplicationContext(), ""+ pref.contains("user_email"), Toast.LENGTH_LONG).show();
+        if (pref.contains("user_email")) {
             loginRegView.setVisibility(View.GONE);
             loggedView.setVisibility(View.VISIBLE);
         }
@@ -142,16 +149,35 @@ public class MainActivity extends AppCompatActivity {
         });
 
         // logout button handling
-        Button btnLogout = findViewById(R.id.btn_Logout);
+        Button btnLogout = findViewById(R.id.btn_logout);
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 SharedPreferences pref = getSharedPreferences("accountPref", MODE_PRIVATE);
                 SharedPreferences.Editor prefEditor = pref.edit();
-                prefEditor.remove("user").commit();
+                prefEditor.remove("user_email");
+                prefEditor.remove("user_password");
+                prefEditor.remove("user_fname");
+                prefEditor.remove("user_lname");
+                prefEditor.remove("user_addr");
+                prefEditor.remove("user_city");
+                prefEditor.remove("user_post");
+                prefEditor.remove("user_custid");
+                prefEditor.commit();
 
                 finish();
                 startActivity(getIntent());
+            }
+        });
+
+        // account button handling
+        Button btnAccount = findViewById(R.id.btn_account);
+        btnAccount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent account = new Intent(MainActivity.this, AccountActivity.class);
+                finish();
+                startActivity(account);
             }
         });
     }
