@@ -11,9 +11,11 @@ import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -98,22 +100,33 @@ public class MainActivity extends AppCompatActivity {
 //                (pref.getString("accountPref", null) == null ?
 //                getResources().getString(R.string.str_guest) : pref.getString("accountPref", null)));
 
-        try {
-            if (!pref.contains("user")) {
-                pref.edit().putString("user", "Guest").commit();
-            }
-            else
-                Toast.makeText(getApplicationContext(), "Is not empty", Toast.LENGTH_SHORT).show();
-        } catch (Exception e){
-            Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+//        try {
+//            if (!pref.contains("user")) {
+//                pref.edit().putString("user", "Guest").commit();
+//            }
+//            else
+//                Toast.makeText(getApplicationContext(), "Is not empty", Toast.LENGTH_SHORT).show();
+//        } catch (Exception e){
+//            Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+//        }
+        tvWelcome.setText(tvWelcome.getText()+" "+pref.getString("user", "Guest"));
+
+        // View visibility control
+        LinearLayout loginRegView = findViewById(R.id.main_guest);
+        LinearLayout loggedView = findViewById(R.id.main_loggedin);
+        Toast.makeText(getApplicationContext(), ""+ pref.contains("user"), Toast.LENGTH_LONG).show();
+        if (pref.contains("user")) {
+            loginRegView.setVisibility(View.GONE);
+            loggedView.setVisibility(View.VISIBLE);
         }
-        tvWelcome.setText(tvWelcome.getText()+" "+pref.getString("user", null));
 
         // login button handling
         Button btnLogin = findViewById(R.id.btnLogin);
         btnLogin.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent login = new Intent(MainActivity.this, LoginActivity.class);
+                finish();
+                startActivity(getIntent());
                 startActivity(login);
             }
         });
@@ -123,7 +136,22 @@ public class MainActivity extends AppCompatActivity {
         btnRegister.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent register = new Intent(MainActivity.this, RegistrationActivity.class);
+                finish();
                 startActivity(register);
+            }
+        });
+
+        // logout button handling
+        Button btnLogout = findViewById(R.id.btn_Logout);
+        btnLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SharedPreferences pref = getSharedPreferences("accountPref", MODE_PRIVATE);
+                SharedPreferences.Editor prefEditor = pref.edit();
+                prefEditor.remove("user").commit();
+
+                finish();
+                startActivity(getIntent());
             }
         });
     }
