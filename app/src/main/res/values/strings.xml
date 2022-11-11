@@ -23,7 +23,7 @@
     <string name="msg_must_select_a_showtime">Please select a showtime to proceed.</string>
     <string name="btn_msg_submit">Submit</string>
     <string name="btn_msg_cancel">Cancel</string>
-    <string name="msg_ticket_price">Price:</string>
+    <string name="msg_ticket_price">Price: $</string>
     <string name="msg_purchase_success">Purchase successfully!</string>
 
     <!-- movie name -->

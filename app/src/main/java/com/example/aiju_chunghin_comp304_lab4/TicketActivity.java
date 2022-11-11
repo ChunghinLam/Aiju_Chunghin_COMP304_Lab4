@@ -37,7 +37,7 @@ public class TicketActivity extends AppCompatActivity {
         String movieShowDate = intent.getStringExtra("movieDate"); // Nov 13
 
         ImageView imageView = findViewById(R.id.ivMovieAvatar);
-        // simply way
+        // simplify way to implement
         switch (movieId) {
             case 0:
                 imageView.setImageResource(R.mipmap.bullettrain_foreground);
@@ -116,17 +116,21 @@ public class TicketActivity extends AppCompatActivity {
                 }
 
                 // return to main screen
-
                 Toast.makeText(getApplicationContext(), getResources().getText(R.string.msg_purchase_success), Toast.LENGTH_LONG).show();
+                moveToMainPage();
             }
         });
 
         Button btnCancel = findViewById(R.id.btnCancel);
         btnCancel.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent intent = new Intent(TicketActivity.this, MainActivity.class);
-                startActivity(intent);
+                moveToMainPage();
             }
         });
+    }
+
+    private void moveToMainPage() {
+        Intent intent = new Intent(TicketActivity.this, MainActivity.class);
+        startActivity(intent);
     }
 }

@@ -30,6 +30,7 @@
             android:id="@+id/main_guest"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
+
             <Button
                 android:id="@+id/btnLogin"
                 android:layout_width="wrap_content"
