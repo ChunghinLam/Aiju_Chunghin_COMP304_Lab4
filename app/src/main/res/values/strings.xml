@@ -4,6 +4,8 @@
     <string name="tvWelcome">Welcome, </string>
     <string name="str_guest">Guest</string>
     <string name="btnLogin">Login</string>
+    <string name="btn_logout">Logout</string>
+    <string name="btn_account">Account</string>
     <string name="btnRegister">Register</string>
     <string name="id_label">Your email address: </string>
     <string name="pass_label">Password: </string>
