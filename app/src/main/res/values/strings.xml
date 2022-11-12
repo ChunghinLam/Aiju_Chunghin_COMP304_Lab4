@@ -7,10 +7,13 @@
     <string name="btn_logout">Logout</string>
     <string name="btn_account">Account</string>
     <string name="btnRegister">Register</string>
+    <string name="btn_confirm">Confirm</string>
+    <string name="btn_clear">Clear</string>
+    <string name="btn_delete_acc">Delete Account</string>
     <string name="id_label">Your email address: </string>
     <string name="pass_label">Password: </string>
+    <string name="confPass_label">Confirm your Password: </string>
     <string name="input_hint">Type here</string>
-    <string name="use_of_terms">As registered, we assume that you have read, understand, and agree on our use of terms.</string>
 
     <!-- messages -->
     <string name="msg_select_showtime">Please select the number of tickets and showtime</string>
@@ -23,7 +26,14 @@
     <string name="msg_must_select_a_showtime">Please select a showtime to proceed.</string>
     <string name="btn_msg_submit">Submit</string>
     <string name="btn_msg_cancel">Cancel</string>
+
+    <string name="use_of_terms">As registered, we assume that you have read, understand, and agree on our use of terms.</string>
+    <string name="dif_pass_msg">You have entered wrong password in confirm-password column. Please re-enter correctly.</string>
+    <string name="faital_login">You have entered wrong credential information. Please confirm your ID and password.</string>
+    <string name="unfilled_msg">Please fill all the column</string>
+    <string name="good_bye_msg">Thank you for using our app.</string>
     <string name="msg_ticket_price">Price: $</string>
+
     <string name="msg_purchase_success">Purchase successfully!</string>
 
     <!-- movie name -->

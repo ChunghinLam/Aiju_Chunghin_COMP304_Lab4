@@ -14,13 +14,14 @@
 
         <TextView
             android:id="@+id/tvWelcome"
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/header_layout_width"
             android:layout_height="match_parent"
             android:gravity="center_vertical"
             android:text="@string/tvWelcome"
             android:textColor="@color/purple_500"
             android:textSize="@dimen/header_size"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:maxLines="2"/>
 
         <View
             android:layout_width="0dp"
@@ -50,12 +51,13 @@
             android:layout_height="wrap_content"
             android:visibility="gone">
             <Button
-                android:id="@+id/btn_Logout"
+                android:id="@+id/btn_logout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/btn_logout"
                 android:layout_marginRight="@dimen/def_margin"/>
             <Button
+                android:id="@+id/btn_account"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/btn_account"/>

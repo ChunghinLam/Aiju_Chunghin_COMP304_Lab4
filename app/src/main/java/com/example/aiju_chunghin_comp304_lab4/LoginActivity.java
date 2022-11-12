@@ -24,7 +24,7 @@ import java.util.List;
 public class LoginActivity extends AppCompatActivity {
     private CustomerViewModel customerViewModel;
     private TextView textView;
-    Customer customer;
+    //public static Customer gCustomer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,21 +99,30 @@ public class LoginActivity extends AppCompatActivity {
                             )
                         password_bool = true;
                     if (email_bool && password_bool){
-                        Toast.makeText(getApplicationContext(), "Passed!"+customer.getCustId(), Toast.LENGTH_LONG).show();
+                        //Toast.makeText(getApplicationContext(), "Passed!"+customer.getCustId(), Toast.LENGTH_LONG).show();
                         // Set who's current account in Shared Preference
                         SharedPreferences pref = getSharedPreferences("accountPref", MODE_PRIVATE);
                         SharedPreferences.Editor prefEditer = pref.edit();
-                        prefEditer.putString("user", customer.getEmail());
+                        prefEditer.putString("user_email", customer.getEmail());
+                        prefEditer.putString("user_password", customer.getPassword());
+                        prefEditer.putString("user_fname", customer.getFirstname());
+                        prefEditer.putString("user_lname", customer.getLastname());
+                        prefEditer.putString("user_addr", customer.getAddress());
+                        prefEditer.putString("user_city", customer.getCity());
+                        prefEditer.putString("user_post", customer.getPostalCode());
+                        prefEditer.putInt("user_custid", customer.getCustId());
                         prefEditer.commit();
+                        //gCustomer = customer;
 
                         // Move to Main Activity
                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                         startActivity(intent);
                         break;
-                    }else{
-                     Toast.makeText(getApplicationContext(), "wrong!", Toast.LENGTH_LONG).show();
                     }
                 }
+                if (!getSharedPreferences("accountPref", MODE_PRIVATE).contains("user_email"))
+                    Toast.makeText(getApplicationContext(), R.string.faital_login, Toast.LENGTH_LONG).show();
+
             }
 
         });
@@ -125,5 +134,5 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 }
-// TODO: Add modify/delete account function
+// DONE: Add modify/delete account function
 // TODO: Decline duplicate email account
