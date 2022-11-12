@@ -5,7 +5,8 @@
     <string name="str_guest">Guest</string>
     <string name="btnLogin">Login</string>
     <string name="btn_logout">Logout</string>
-    <string name="btn_account">Account</string>
+    <string name="btn_account">My Account</string>
+    <string name="btn_ticket">My Ticket</string>
     <string name="btnRegister">Register</string>
     <string name="btn_confirm">Confirm</string>
     <string name="btn_clear">Clear</string>
@@ -30,6 +31,7 @@
     <string name="use_of_terms">As registered, we assume that you have read, understand, and agree on our use of terms.</string>
     <string name="dif_pass_msg">You have entered wrong password in confirm-password column. Please re-enter correctly.</string>
     <string name="faital_login">You have entered wrong credential information. Please confirm your ID and password.</string>
+    <string name="msg_login_ok">Login as %s successfully!</string>
     <string name="unfilled_msg">Please fill all the column</string>
     <string name="good_bye_msg">Thank you for using our app.</string>
     <string name="msg_ticket_price">Price: $</string>

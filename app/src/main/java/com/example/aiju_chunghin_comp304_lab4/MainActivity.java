@@ -2,7 +2,6 @@ package com.example.aiju_chunghin_comp304_lab4;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -10,22 +9,14 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.aiju_chunghin_comp304_lab4.DAOs.MovieDAO;
 import com.example.aiju_chunghin_comp304_lab4.Models.Movie;
 import com.example.aiju_chunghin_comp304_lab4.ViewModels.MovieViewModel;
 
@@ -46,19 +37,6 @@ public class MainActivity extends AppCompatActivity {
 //        SharedPreferences pref = getApplicationContext().getSharedPreferences("pref", 0);
         SharedPreferences pref = getSharedPreferences("accountPref", MODE_PRIVATE);
 
-//        tvWelcome.setText(tvWelcome.getText() + " " +
-//                (pref.getString("accountPref", null) == null ?
-//                getResources().getString(R.string.str_guest) : pref.getString("accountPref", null)));
-
-//        try {
-//            if (!pref.contains("user")) {
-//                pref.edit().putString("user", "Guest").commit();
-//            }
-//            else
-//                Toast.makeText(getApplicationContext(), "Is not empty", Toast.LENGTH_SHORT).show();
-//        } catch (Exception e){
-//            Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
-//        }
         /* INNOVATION */
         String userName = pref.getString("user_email", "Guest");
 //        Toast.makeText(getApplicationContext(), 1+userName, Toast.LENGTH_SHORT).show();
@@ -69,69 +47,67 @@ public class MainActivity extends AppCompatActivity {
 
         /* INNOVATION */
         // View visibility control
-        LinearLayout loginRegView = findViewById(R.id.main_guest);
-        LinearLayout loggedView = findViewById(R.id.main_loggedin);
-
-//        Toast.makeText(getApplicationContext(), ""+ pref.contains("user_email"), Toast.LENGTH_LONG).show();
-        if (pref.contains("user_email")) {
-
-            loginRegView.setVisibility(View.GONE);
-            loggedView.setVisibility(View.VISIBLE);
-        }
+//        LinearLayout loginRegView = findViewById(R.id.main_guest);
+//        LinearLayout loggedView = findViewById(R.id.main_loggedin);
+//
+//        if (pref.contains("user_email")) {
+//            loginRegView.setVisibility(View.GONE);
+//            loggedView.setVisibility(View.VISIBLE);
+//        }
 
         // login button handling
-        Button btnLogin = findViewById(R.id.btnLogin);
-        btnLogin.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent login = new Intent(MainActivity.this, LoginActivity.class);
-                finish();
-                startActivity(getIntent());
-                startActivity(login);
-            }
-        });
+//        Button btnLogin = findViewById(R.id.btnLogin);
+//        btnLogin.setOnClickListener(new View.OnClickListener() {
+//            public void onClick(View v) {
+//                Intent login = new Intent(MainActivity.this, LoginActivity.class);
+////                finish();
+////                startActivity(getIntent());
+//                startActivity(login);
+//            }
+//        });
 
         // register button handling
-        Button btnRegister = findViewById(R.id.btnRegister);
-        btnRegister.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent register = new Intent(MainActivity.this, RegistrationActivity.class);
-                finish();
-                startActivity(register);
-            }
-        });
+//        Button btnRegister = findViewById(R.id.btnRegister);
+//        btnRegister.setOnClickListener(new View.OnClickListener() {
+//            public void onClick(View v) {
+//                Intent register = new Intent(MainActivity.this, RegistrationActivity.class);
+//                finish();
+//                startActivity(register);
+//            }
+//        });
 
         // logout button handling
-        Button btnLogout = findViewById(R.id.btn_logout);
-        btnLogout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                SharedPreferences pref = getSharedPreferences("accountPref", MODE_PRIVATE);
-                SharedPreferences.Editor prefEditor = pref.edit();
-                prefEditor.remove("user_email");
-                prefEditor.remove("user_password");
-                prefEditor.remove("user_fname");
-                prefEditor.remove("user_lname");
-                prefEditor.remove("user_addr");
-                prefEditor.remove("user_city");
-                prefEditor.remove("user_post");
-                prefEditor.remove("user_custid");
-                prefEditor.commit();
-
-                finish();
-                startActivity(getIntent());
-            }
-        });
+//        Button btnLogout = findViewById(R.id.btn_logout);
+//        btnLogout.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                SharedPreferences pref = getSharedPreferences("accountPref", MODE_PRIVATE);
+//                SharedPreferences.Editor prefEditor = pref.edit();
+//                prefEditor.remove("user_email");
+//                prefEditor.remove("user_password");
+//                prefEditor.remove("user_fname");
+//                prefEditor.remove("user_lname");
+//                prefEditor.remove("user_addr");
+//                prefEditor.remove("user_city");
+//                prefEditor.remove("user_post");
+//                prefEditor.remove("user_custid");
+//                prefEditor.commit();
+//
+//                finish();
+//                startActivity(getIntent());
+//            }
+//        });
 
         // account button handling
-        Button btnAccount = findViewById(R.id.btn_account);
-        btnAccount.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent account = new Intent(MainActivity.this, AccountActivity.class);
-                finish();
-                startActivity(account);
-            }
-        });
+//        Button btnAccount = findViewById(R.id.btn_account);
+//        btnAccount.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent account = new Intent(MainActivity.this, AccountActivity.class);
+//                finish();
+//                startActivity(account);
+//            }
+//        });
     }
 
     @Override
@@ -139,21 +115,25 @@ public class MainActivity extends AppCompatActivity {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_layout, menu);
 
-        // hide a menu item
         SharedPreferences pref = getSharedPreferences("accountPref", MODE_PRIVATE);
-        if (pref.contains("user")) {
-            MenuItem btnLogin = menu.findItem(R.id.btnLogin);
-            btnLogin.setVisible(false);
 
-            MenuItem btnRegister = menu.findItem(R.id.btnRegister);
-            btnRegister.setVisible(false);
+        // if is login
+        if (pref.contains("user_email")) {
+            MenuItem mnuLogin = menu.findItem(R.id.mnuLogin);
+            mnuLogin.setVisible(false);
+
+            MenuItem mnuRegister = menu.findItem(R.id.mnuRegister);
+            mnuRegister.setVisible(false);
         }
         else {
-            MenuItem btn_Logout = menu.findItem(R.id.btn_Logout);
-            btn_Logout.setVisible(false);
+            MenuItem mnuLogout = menu.findItem(R.id.mnuLogout);
+            mnuLogout.setVisible(false);
 
-            MenuItem btn_account = menu.findItem(R.id.btn_account);
-            btn_account.setVisible(false);
+            MenuItem mnuAccount = menu.findItem(R.id.mnuMyAccount);
+            mnuAccount.setVisible(false);
+
+            MenuItem mnuTicket = menu.findItem(R.id.mnuMyTicket);
+            mnuTicket.setVisible(false);
         }
 
         return super.onCreateOptionsMenu(menu);
@@ -161,20 +141,21 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        Toast.makeText(this, "Selected Item: " +item.getTitle(), Toast.LENGTH_SHORT).show();
         switch (item.getItemId()) {
-            case R.id.btnLogin:
+            case R.id.mnuLogin:
                 doLogin();
                 return true;
-            case R.id.btn_Logout:
+            case R.id.mnuLogout:
                 doLogout();
                 return true;
-            case R.id.btnRegister:
+            case R.id.mnuRegister:
                 doRegister();
                 return true;
-            case R.id.btn_account:
-                // do your code
+            case R.id.mnuMyAccount:
+                doMyAccount();
                 return true;
+            case R.id.mnuMyTicket:
+                doMyTicket();
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -182,8 +163,6 @@ public class MainActivity extends AppCompatActivity {
 
     private void doLogin() {
         Intent login = new Intent(MainActivity.this, LoginActivity.class);
-//        finish();
-//        startActivity(getIntent());
         startActivity(login);
     }
 
@@ -192,14 +171,32 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences.Editor prefEditor = pref.edit();
         prefEditor.remove("user").commit();
 
-//        finish();
+        prefEditor.remove("user_email");
+        prefEditor.remove("user_password");
+        prefEditor.remove("user_fname");
+        prefEditor.remove("user_lname");
+        prefEditor.remove("user_addr");
+        prefEditor.remove("user_city");
+        prefEditor.remove("user_post");
+        prefEditor.remove("user_custid");
+        prefEditor.commit();
+
         startActivity(getIntent());
     }
 
     private void doRegister() {
         Intent register = new Intent(MainActivity.this, RegistrationActivity.class);
-//        finish();
         startActivity(register);
+    }
+
+    private void doMyAccount() {
+        Intent account = new Intent(MainActivity.this, MyAccountActivity.class);
+        startActivity(account);
+    }
+
+    private void doMyTicket() {
+        Intent myTicket = new Intent(MainActivity.this, MyTicketActivity.class);
+        startActivity(myTicket);
     }
 
     private void loadMovies() {

@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@+id/btnLogin"
+    <item android:id="@+id/mnuLogin"
         android:title="@string/btnLogin" />
-    <item android:id="@+id/btn_account"
+    <item android:id="@+id/mnuMyAccount"
         android:title="@string/btn_account" />
-    <item android:id="@+id/btnRegister"
+    <item android:id="@+id/mnuMyTicket"
+        android:title="@string/btn_ticket" />
+    <item android:id="@+id/mnuRegister"
         android:title="@string/btnRegister" />
-    <item android:id="@+id/btn_Logout"
+    <item android:id="@+id/mnuLogout"
         android:title="@string/btn_logout" />
 </menu>

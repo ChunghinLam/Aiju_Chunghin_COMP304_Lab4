@@ -115,6 +115,9 @@ public class LoginActivity extends AppCompatActivity {
                         //gCustomer = customer;
 
                         // Move to Main Activity
+                        String login_ok = getApplicationContext().getString(R.string.msg_login_ok);
+                        Toast.makeText(getApplicationContext(), String.format(login_ok, customer.getEmail()), Toast.LENGTH_SHORT).show();
+
                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                         startActivity(intent);
                         break;

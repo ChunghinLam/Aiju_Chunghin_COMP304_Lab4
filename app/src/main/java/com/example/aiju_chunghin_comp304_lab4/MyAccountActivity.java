@@ -1,30 +1,21 @@
 package com.example.aiju_chunghin_comp304_lab4;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import android.content.AsyncQueryHandler;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.aiju_chunghin_comp304_lab4.Models.Customer;
 import com.example.aiju_chunghin_comp304_lab4.ViewModels.CustomerViewModel;
-import com.google.android.material.textfield.TextInputEditText;
-import com.google.android.material.textfield.TextInputLayout;
 
-import java.security.spec.ECField;
-import java.util.List;
-
-public class AccountActivity extends AppCompatActivity {
+public class MyAccountActivity extends AppCompatActivity {
     private CustomerViewModel customerViewModel;
     private Button btnDelete, btnConfirm;
     private TextView id_txtView, pass_txtView, confPass_txtView, fname_txtView, lname_txtView, addr_txtView, city_txtView, postal_txtView;
@@ -191,7 +182,7 @@ public class AccountActivity extends AppCompatActivity {
 
     private void backMain(){
         finish();
-        Intent move = new Intent(AccountActivity.this, MainActivity.class);
+        Intent move = new Intent(MyAccountActivity.this, MainActivity.class);
         startActivity(move);
     }
 
