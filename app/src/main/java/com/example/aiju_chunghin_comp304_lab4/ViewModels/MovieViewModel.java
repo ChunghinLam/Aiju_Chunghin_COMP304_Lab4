@@ -40,4 +40,6 @@ public class MovieViewModel extends AndroidViewModel {
     public void deleteAllMovies() {
         movieRepository.deleteAllMovies();
     }
+
+    public Movie getMovieByName(String name) { return movieRepository.getMovieByName(name); }
 }

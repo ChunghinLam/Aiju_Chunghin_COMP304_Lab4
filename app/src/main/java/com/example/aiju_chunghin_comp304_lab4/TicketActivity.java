@@ -16,6 +16,7 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.aiju_chunghin_comp304_lab4.Models.Movie;
 import com.example.aiju_chunghin_comp304_lab4.Models.Ticket;
 import com.example.aiju_chunghin_comp304_lab4.ViewModels.MovieViewModel;
 import com.example.aiju_chunghin_comp304_lab4.ViewModels.TicketViewModel;
@@ -34,7 +35,7 @@ public class TicketActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         Integer movieId = intent.getIntExtra("movieId", 0);
-        String movieShowDate = intent.getStringExtra("movieDate"); // Nov 13
+        String movieShowDate = intent.getStringExtra("movieShowDate"); // Nov 13
 
         ImageView imageView = findViewById(R.id.ivMovieAvatar);
         // simplify way to implement
@@ -70,7 +71,8 @@ public class TicketActivity extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences("MySharedPref", MODE_PRIVATE);
         SharedPreferences.Editor myEdit = sharedPreferences.edit();
 
-        TicketViewModel model = new ViewModelProvider(this).get(TicketViewModel.class);
+        TicketViewModel ticketModel = new ViewModelProvider(this).get(TicketViewModel.class);
+        MovieViewModel movieModel = new ViewModelProvider(this).get(MovieViewModel.class);
 
         Button btnSubmit = findViewById(R.id.btnSubmit);
         btnSubmit.setOnClickListener(new View.OnClickListener()
@@ -102,12 +104,18 @@ public class TicketActivity extends AppCompatActivity {
                             } catch (ParseException pe) {
                                 pe.printStackTrace();
                             }
+                            String[] movieList = getResources().getStringArray(R.array.movieList);
 
+                            Movie theMovie = movieModel.getMovieByName(movieList[movieId]);
+
+                            SharedPreferences pref = getSharedPreferences("accountPref", MODE_PRIVATE);
                             Ticket newTicket = new Ticket(
-                                0, movieId, numberOfTicket, millisec, (numberOfTicket * TICKET_PRICE)
+                                pref.getInt("user_custid", 0),
+                                theMovie.getMovieId(),
+                                numberOfTicket, millisec, (numberOfTicket * TICKET_PRICE)
                             );
 
-                            model.insert(newTicket);
+                            ticketModel.insert(newTicket);
                         }
                     });
                 }

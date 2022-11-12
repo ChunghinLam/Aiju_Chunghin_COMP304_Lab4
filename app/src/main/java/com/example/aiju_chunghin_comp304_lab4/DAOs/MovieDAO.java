@@ -28,4 +28,7 @@ public interface MovieDAO {
 
     @Query("DELETE FROM Movie")
     public void deleteAllMovies();
+
+    @Query("Select * from Movie where movieName == :name")
+    public Movie getMovieByName(String name);
 }

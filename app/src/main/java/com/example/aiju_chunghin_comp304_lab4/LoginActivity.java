@@ -42,24 +42,23 @@ public class LoginActivity extends AppCompatActivity {
         });
 
         /* DEBUG USE */
-        textView = findViewById(R.id.debug_txtView);
-        try {
-        customerViewModel.getAllCustomers().observe(this, new Observer<List<Customer>>() {
-            @Override
-            public void onChanged(List<Customer> customers) {
-                String output = "";
-                for (Customer customer : customers) {
-                    output += customer.getEmail() + ":" +
-                            customer.getPassword() +"\n";
-                }
-                textView.setText(output);
-            }
-        });}
-        catch (Exception e){
-            textView.setText(e.getMessage());
-        }
-
-
+//        textView = findViewById(R.id.debug_txtView);
+//        try {
+//            customerViewModel.getAllCustomers().observe(this, new Observer<List<Customer>>() {
+//                @Override
+//                public void onChanged(List<Customer> customers) {
+//                    String output = "";
+//                    for (Customer customer : customers) {
+//                        output += customer.getEmail() + ":" +
+//                                customer.getPassword() +"\n";
+//                    }
+//                    textView.setText(output);
+//                }
+//            });
+//        }
+//        catch (Exception e){
+//            textView.setText(e.getMessage());
+//        }
     }
 
     // Authentication method
@@ -69,6 +68,7 @@ public class LoginActivity extends AppCompatActivity {
         TextView password = findViewById(R.id.logAct_pass);
 
         // check if input matches the data stored in customerDB
+        // --> should change to get customer by query
         customerViewModel.getAllCustomers().observe(this, new Observer<List<Customer>>() {
             Boolean email_bool;
             Boolean password_bool;
@@ -90,13 +90,13 @@ public class LoginActivity extends AppCompatActivity {
                         email_bool = true;
                     }
                     if (
-                            //true // worked
-                            //"aaa" == "aaa" // worked
-                            //customer.getPassword() == "aaa"
-                            //password.getText().toString() == "aaa"
-                            //customer.getPassword() == password.getText().toString())
-                            customer.getPassword().equals(password.getText().toString())
-                            )
+                        //true // worked
+                        //"aaa" == "aaa" // worked
+                        //customer.getPassword() == "aaa"
+                        //password.getText().toString() == "aaa"
+                        //customer.getPassword() == password.getText().toString())
+                        customer.getPassword().equals(password.getText().toString())
+                    )
                         password_bool = true;
                     if (email_bool && password_bool){
                         //Toast.makeText(getApplicationContext(), "Passed!"+customer.getCustId(), Toast.LENGTH_LONG).show();
@@ -125,16 +125,14 @@ public class LoginActivity extends AppCompatActivity {
                 }
                 if (!getSharedPreferences("accountPref", MODE_PRIVATE).contains("user_email"))
                     Toast.makeText(getApplicationContext(), R.string.faital_login, Toast.LENGTH_LONG).show();
-
             }
-
         });
+
         //If matches id/password stored in db
 //        if ((email_bool && password_bool))
 //            return true;
 //        else
 //            return false;
-
     }
 }
 // DONE: Add modify/delete account function

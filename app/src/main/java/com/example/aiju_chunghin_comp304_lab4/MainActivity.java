@@ -30,7 +30,35 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        loadMovies();
+        MovieViewModel model = new ViewModelProvider(this).get(MovieViewModel.class);
+
+        // movie list handling
+        ListView movieListView = findViewById(R.id.lvMovieList);
+        model.getAllMovies().observe(this, new Observer<List<Movie>>() {
+
+            @Override
+            public void onChanged(@Nullable List<Movie> list) {
+                if (list.isEmpty())
+                    loadMovies(); // load only when db is empty, i.e. when initialize
+
+                MovieAdapter adapter = new MovieAdapter(getApplicationContext(), new ArrayList<>(list));
+
+                movieListView.setAdapter(adapter);
+                movieListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                            String value = (String)parent.getItemAtPosition(position);
+                        Intent intent = new Intent(MainActivity.this, TicketActivity.class);
+//                            model.getAllMovies().observe();
+
+                        intent.putExtra("movieId", position);
+
+                        String date = getApplicationContext().getString(R.string.showdate_1113);
+                        intent.putExtra("movieShowDate", date.toString());
+                        startActivity(intent);
+                    }
+                });
+            }
+        });
 
         // if is login, show username, else, show welcome guest
         TextView tvWelcome = findViewById(R.id.tvWelcome);
@@ -200,15 +228,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void loadMovies() {
+        MovieViewModel model = new ViewModelProvider(this).get(MovieViewModel.class);
+
         // load movies to DB
-        Movie m1 = new Movie(getResources().getString(R.string.movie_bullettrain));
-        Movie m2 = new Movie(getResources().getString(R.string.movie_topgun));
-        Movie m3 = new Movie(getResources().getString(R.string.movie_minions));
-        Movie m4 = new Movie(getResources().getString(R.string.movie_pearl));
-        Movie m5 = new Movie(getResources().getString(R.string.movie_womanking));
+        ArrayList<Movie> movieList = new ArrayList<>();
+        movieList.add(new Movie(getResources().getString(R.string.movie_bullettrain)));
+        movieList.add(new Movie(getResources().getString(R.string.movie_topgun)));
+        movieList.add(new Movie(getResources().getString(R.string.movie_minions)));
+        movieList.add(new Movie(getResources().getString(R.string.movie_pearl)));
+        movieList.add(new Movie(getResources().getString(R.string.movie_womanking)));
 
         try {
-            MovieViewModel model = new ViewModelProvider(this).get(MovieViewModel.class);
 
             // clear everything before adding
             AsyncTask.execute(new Runnable() {
@@ -216,36 +246,13 @@ public class MainActivity extends AppCompatActivity {
                 public void run() {
                     model.deleteAllMovies();
 
-                    model.insert(m1);
-                    model.insert(m2);
-                    model.insert(m3);
-                    model.insert(m4);
-                    model.insert(m5);
+                    for (Movie movie : movieList) {
+                        model.insert(movie);
+                    }
                 }
             });
 
-            // movie list handling
-            ListView movieListView = findViewById(R.id.lvMovieList);
-            model.getAllMovies().observe(this, new Observer<List<Movie>>() {
 
-                @Override
-                public void onChanged(@Nullable List<Movie> list) {
-                    MovieAdapter adapter = new MovieAdapter(getApplicationContext(), new ArrayList<>(list));
-
-                    movieListView.setAdapter(adapter);
-                    movieListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                            String value = (String)parent.getItemAtPosition(position);
-                            Intent intent = new Intent(MainActivity.this, TicketActivity.class);
-                            intent.putExtra("movieId", position);
-
-                            String date = getApplicationContext().getString(R.string.showdate_1113);
-                            intent.putExtra("movieShowDate", date.toString());
-                            startActivity(intent);
-                        }
-                    });
-                }
-            });
         }
         catch (Exception ex) {
 //            TextView tvErrorMsg = findViewById(R.id.tvErrorMsg);

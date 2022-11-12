@@ -39,6 +39,14 @@
     <string name="msg_purchase_success">Purchase successfully!</string>
 
     <!-- movie name -->
+    <string-array name="movieList">
+        <item>The Woman King</item>
+        <item>Top Gun: Maverick</item>
+        <item>Pearl</item>
+        <item>Minions: The Rise of Gru</item>
+        <item>Bullet Train</item>
+    </string-array>
+
     <string name="movie_womanking">The Woman King</string>
     <string name="movie_topgun">Top Gun: Maverick</string>
     <string name="movie_pearl">Pearl</string>

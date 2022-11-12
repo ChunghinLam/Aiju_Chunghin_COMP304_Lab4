@@ -36,4 +36,8 @@ public class MovieRepository {
     public void deleteAllMovies() {
         movieDAO.deleteAllMovies();
     }
+
+    public Movie getMovieByName(String name) {
+        return movieDAO.getMovieByName(name);
+    }
 }
