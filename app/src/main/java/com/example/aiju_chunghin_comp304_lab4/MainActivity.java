@@ -191,6 +191,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void doLogin() {
         Intent login = new Intent(MainActivity.this, LoginActivity.class);
+        finish();
         startActivity(login);
     }
 
@@ -209,6 +210,7 @@ public class MainActivity extends AppCompatActivity {
         prefEditor.remove("user_custid");
         prefEditor.commit();
 
+        finish();
         startActivity(getIntent());
     }
 
