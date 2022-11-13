@@ -8,7 +8,7 @@
     tools:context=".LoginActivity">
 
         <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="@dimen/input_width"
+            android:layout_width="match_parent"
             android:layout_height="@dimen/input_height">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -21,7 +21,7 @@
 
 
         <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="@dimen/input_width"
+            android:layout_width="match_parent"
             android:layout_height="@dimen/input_height">
 
             <com.google.android.material.textfield.TextInputEditText

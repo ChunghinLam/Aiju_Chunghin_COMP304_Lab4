@@ -14,6 +14,7 @@
     <string name="id_label">Your email address: </string>
     <string name="pass_label">Password: </string>
     <string name="confPass_label">Confirm your Password: </string>
+    <string name="confPass_curPass_label">Type your current Password:</string>
     <string name="input_hint">Type here</string>
 
     <!-- messages -->

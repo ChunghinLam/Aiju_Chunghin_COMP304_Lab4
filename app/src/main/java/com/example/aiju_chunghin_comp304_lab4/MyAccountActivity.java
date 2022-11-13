@@ -91,8 +91,16 @@ public class MyAccountActivity extends AppCompatActivity {
         deleteBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+//                /* DEBUG USE */
+//                // check isFill method
+//                if (isFilled() && customer.getPassword().equals(confPass_txtView.getText().toString()))
+//                    Toast.makeText(getApplicationContext(), ""+isFilled(), Toast.LENGTH_LONG).show();
+//                else
+//                    Toast.makeText(getApplicationContext(), "says it's empty", Toast.LENGTH_LONG).show();
+//                /* DEBUG FIELD END */
+
                 Boolean filled = isFilled();
-                if (customer.getPassword().equals(confPass_txtView.getText().toString())) {
+                if (filled && customer.getPassword().equals(confPass_txtView.getText().toString())) {
                     deleteCustomer(customer);
 
                     Toast.makeText(getApplicationContext(), R.string.good_bye_msg, Toast.LENGTH_LONG).show();
@@ -161,7 +169,7 @@ public class MyAccountActivity extends AppCompatActivity {
     }
 
     private void deleteCustomer(Customer customer){
-        AsyncTask.execute(new Runnable() {
+                AsyncTask.execute(new Runnable() {
             @Override
             public void run() {
                 customerViewModel.delete(customer);
@@ -187,15 +195,16 @@ public class MyAccountActivity extends AppCompatActivity {
     }
 
     private boolean isFilled(){
+//        Toast.makeText(getApplicationContext(), ""+(postal_txtView.getText() == null || postal_txtView.getText().toString().isEmpty()), Toast.LENGTH_SHORT).show();
         if (
-                (id_txtView.getText().equals(null)) ||
-                (addr_txtView.getText().equals(null)) ||
-                (city_txtView.getText().equals(null)) ||
-                (pass_txtView.getText().equals(null)) ||
-                        (confPass_txtView.getText().equals(null)) ||
-                        (fname_txtView.getText().equals(null)) ||
-                        (lname_txtView.getText().equals(null)) ||
-                        (postal_txtView.getText().equals(null))
+                (id_txtView.getText().toString().isEmpty()) ||
+                (addr_txtView.getText().toString().isEmpty()) ||
+                (city_txtView.getText().toString().isEmpty()) ||
+                (pass_txtView.getText().toString().isEmpty()) ||
+                (confPass_txtView.getText().toString().isEmpty()) ||
+                (fname_txtView.getText().toString().isEmpty()) ||
+                (lname_txtView.getText().toString().isEmpty()) ||
+                (postal_txtView.getText().toString().isEmpty())
         ){
             Toast.makeText(getApplicationContext(), R.string.unfilled_msg, Toast.LENGTH_SHORT).show();
             return false;
@@ -205,5 +214,5 @@ public class MyAccountActivity extends AppCompatActivity {
     }
 }
 
-// TODO: Fix isFilled
+// DONE: Fix isFilled
 // TODO: Fix
