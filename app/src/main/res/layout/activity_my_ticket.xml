@@ -19,4 +19,93 @@
         android:layout_height="wrap_content"
         android:text="@string/my_ticket_def"/>
 
+    <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- first row -->
+        <TableRow
+            android:id="@+id/row1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:id="@+id/row1tv1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#b0b0b0"
+                android:padding="8dp"
+                android:text="Movie Name" />
+
+            <TextView
+                android:id="@+id/row1tv2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#b0b0b0"
+                android:padding="8dp"
+                android:text="Show Date" />
+
+            <TextView
+                android:id="@+id/row1tv3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#b0b0b0"
+                android:padding="8dp"
+                android:text="Show Time" />
+
+            <TextView
+                android:id="@+id/row1tv4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#b0b0b0"
+                android:padding="8dp"
+                android:text="# of Tickets" />
+
+            <TextView
+                android:id="@+id/row1tv5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#b0b0b0"
+                android:padding="8dp"
+                android:text="Price" />
+        </TableRow>
+
+        <!-- should generate rows programmatically -->
+        <TableRow
+            android:id="@+id/row2"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/row2tv1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="8dp" />
+
+            <TextView
+                android:id="@+id/row2tv2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="8dp" />
+
+            <TextView
+                android:id="@+id/row2tv3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="8dp" />
+
+            <TextView
+                android:id="@+id/row2tv4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="8dp" />
+
+            <TextView
+                android:id="@+id/row2tv5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="8dp" />
+        </TableRow>
+    </TableLayout>
 </LinearLayout>

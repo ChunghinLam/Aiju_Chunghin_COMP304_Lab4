@@ -44,4 +44,6 @@ public class MovieRepository {
     public Movie getMovieByName(String name) {
         return movieDAO.getMovieByName(name);
     }
+
+    public String getMovieNameById(int movieId) { return movieDAO.getMovieNameById(movieId); }
 }

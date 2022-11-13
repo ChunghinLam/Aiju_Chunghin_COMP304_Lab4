@@ -16,6 +16,7 @@ public class TicketViewModel extends AndroidViewModel {
     private TicketRepository ticketRepository;
     private LiveData<Integer> insertResult;
     private LiveData<List<Ticket>> allTickets;
+    private LiveData<List<Ticket>> ticketsByCustomer;
 
     public TicketViewModel(@NotNull Application application) {
         super(application);
@@ -23,6 +24,7 @@ public class TicketViewModel extends AndroidViewModel {
         ticketRepository = new TicketRepository(application);
         insertResult = ticketRepository.getInsertResult();
         allTickets = ticketRepository.getAllTickets();
+//        ticketsByCustomer = ticketRepository.getTicketsByCustId();
     }
 
     public void insert(Ticket ticket) {
@@ -37,4 +39,5 @@ public class TicketViewModel extends AndroidViewModel {
         return allTickets;
     }
 
+    public LiveData<List<Ticket>> getTicketsByCustId(Integer custId) { return ticketsByCustomer; }
 }

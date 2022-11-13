@@ -25,4 +25,7 @@ public interface TicketDAO {
 
     @Delete
     public void deleteTicket(Ticket ticket);
+
+    @Query("Select * from Ticket where custId = :custId")
+    LiveData<List<Ticket>> getTicketsByCustomer(Integer custId);
 }

@@ -41,4 +41,6 @@ public class CustomerRepository {
     public void delete(Customer customer){
         customerDAO.deleteCustomer(customer);
     }
+
+    public Customer getCustomerById(Integer custId) { return customerDAO.getCustomerById(custId); }
 }

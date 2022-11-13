@@ -44,4 +44,6 @@ public class CustomerViewModel extends AndroidViewModel {
     public void delete(Customer customer){
         customerRepository.delete(customer);
     }
+
+    public Customer getCustomerById(Integer custId) { return customerRepository.getCustomerById(custId); }
 }

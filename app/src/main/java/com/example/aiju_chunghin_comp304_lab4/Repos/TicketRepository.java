@@ -15,11 +15,13 @@ public class TicketRepository {
     private final TicketDAO ticketDAO;
     private MutableLiveData<Integer> insertResult = new MutableLiveData<>();
     private LiveData<List<Ticket>> ticketList;
+    private LiveData<List<Ticket>> ticketsByCustomer;
 
     public TicketRepository(Context context) {
         MovieDatabase db = MovieDatabase.getInstance(context);
         ticketDAO = db.ticketDAO();
         ticketList = ticketDAO.getTicketList();
+//        ticketsByCustomer = ticketDAO.getTicketsByCustomer();
     }
 
     public LiveData<List<Ticket>> getAllTickets() {
@@ -33,4 +35,6 @@ public class TicketRepository {
     public void insert(Ticket ticket) {
         ticketDAO.insertTicket(ticket);
     }
+
+    public LiveData<List<Ticket>> getTicketsByCustId(Integer custId) { return ticketDAO.getTicketsByCustomer(custId); }
 }

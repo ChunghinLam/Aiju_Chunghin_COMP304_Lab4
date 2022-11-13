@@ -42,4 +42,6 @@ public class MovieViewModel extends AndroidViewModel {
     }
 
     public Movie getMovieByName(String name) { return movieRepository.getMovieByName(name); }
+
+    public String getMovieNameById(int movieId) { return movieRepository.getMovieNameById(movieId); }
 }

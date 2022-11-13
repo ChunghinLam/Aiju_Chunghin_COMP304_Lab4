@@ -25,4 +25,7 @@ public interface CustomerDAO {
 
     @Delete
     public void deleteCustomer(Customer customer);
+
+    @Query("Select * from Customer where custId == :custId")
+    public Customer getCustomerById(Integer custId);
 }

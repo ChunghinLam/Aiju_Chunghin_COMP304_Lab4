@@ -31,4 +31,7 @@ public interface MovieDAO {
 
     @Query("Select * from Movie where movieName == :name")
     public Movie getMovieByName(String name);
+
+    @Query("Select movieName from Movie where movieId == :movieId")
+    String getMovieNameById(int movieId);
 }
