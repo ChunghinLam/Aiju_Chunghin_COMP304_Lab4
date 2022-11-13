@@ -23,8 +23,6 @@ import java.util.List;
 
 public class LoginActivity extends AppCompatActivity {
     private CustomerViewModel customerViewModel;
-    private TextView textView;
-    //public static Customer gCustomer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,25 +38,6 @@ public class LoginActivity extends AppCompatActivity {
                 authentication();
             }
         });
-
-        /* DEBUG USE */
-//        textView = findViewById(R.id.debug_txtView);
-//        try {
-//            customerViewModel.getAllCustomers().observe(this, new Observer<List<Customer>>() {
-//                @Override
-//                public void onChanged(List<Customer> customers) {
-//                    String output = "";
-//                    for (Customer customer : customers) {
-//                        output += customer.getEmail() + ":" +
-//                                customer.getPassword() +"\n";
-//                    }
-//                    textView.setText(output);
-//                }
-//            });
-//        }
-//        catch (Exception e){
-//            textView.setText(e.getMessage());
-//        }
     }
 
     // Authentication method
@@ -77,29 +56,11 @@ public class LoginActivity extends AppCompatActivity {
                 email_bool = false;
                 password_bool = false;
                 for (Customer customer : customers){
-                    //Boolean text = customer.getEmail().equals(email.getText().toString());//customer.getEmail().equals("aaa");
-                    //Toast.makeText(getApplicationContext(), text.toString(), Toast.LENGTH_SHORT).show();
-                    if (
-                            //true // worked
-                            //"aaa" == "aaa" // worked
-                            //customer.getEmail() == "aaa" // not work
-                            //email.getText().toString()=="aaa" // not work
-                            //customer.getEmail() == email.getText().toString()
-                            customer.getEmail().equals(email.getText().toString())
-                            ){
+                    if (customer.getEmail().equals(email.getText().toString()))
                         email_bool = true;
-                    }
-                    if (
-                        //true // worked
-                        //"aaa" == "aaa" // worked
-                        //customer.getPassword() == "aaa"
-                        //password.getText().toString() == "aaa"
-                        //customer.getPassword() == password.getText().toString())
-                        customer.getPassword().equals(password.getText().toString())
-                    )
+                    if (customer.getPassword().equals(password.getText().toString()))
                         password_bool = true;
                     if (email_bool && password_bool){
-                        //Toast.makeText(getApplicationContext(), "Passed!"+customer.getCustId(), Toast.LENGTH_LONG).show();
                         // Set who's current account in Shared Preference
                         SharedPreferences pref = getSharedPreferences("accountPref", MODE_PRIVATE);
                         SharedPreferences.Editor prefEditer = pref.edit();
@@ -112,7 +73,6 @@ public class LoginActivity extends AppCompatActivity {
                         prefEditer.putString("user_post", customer.getPostalCode());
                         prefEditer.putInt("user_custid", customer.getCustId());
                         prefEditer.commit();
-                        //gCustomer = customer;
 
                         // Move to Main Activity
                         String login_ok = getApplicationContext().getString(R.string.msg_login_ok);
@@ -127,12 +87,5 @@ public class LoginActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), R.string.faital_login, Toast.LENGTH_LONG).show();
             }
         });
-
-        //If matches id/password stored in db
-//        if ((email_bool && password_bool))
-//            return true;
-//        else
-//            return false;
     }
 }
-// DONE: Add modify/delete account function

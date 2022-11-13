@@ -17,10 +17,8 @@ import com.example.aiju_chunghin_comp304_lab4.ViewModels.CustomerViewModel;
 
 public class MyAccountActivity extends AppCompatActivity {
     private CustomerViewModel customerViewModel;
-    private Button btnDelete, btnConfirm;
     private TextView id_txtView, pass_txtView, confPass_txtView, fname_txtView, lname_txtView, addr_txtView, city_txtView, postal_txtView;
     private Customer customer;
-    //private final Customer CURCUSTOMER = LoginActivity.gCustomer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,52 +50,21 @@ public class MyAccountActivity extends AppCompatActivity {
                 pref.getString("user_addr", null), pref.getString("user_city", null),
                 pref.getString("user_post", null), pref.getString("user_email", null)
                 );
+
         /* INNOVATION */
-//        Toast.makeText(getApplicationContext(), customer.getEmail(), Toast.LENGTH_LONG).show();
         id_txtView.setText(customer.getEmail());
         pass_txtView.setText(customer.getPassword());
-        //confPass_txtView.setText(customer.getConfirmPassword());
         fname_txtView.setText(customer.getFirstname());
         lname_txtView.setText(customer.getLastname());
         addr_txtView.setText(customer.getAddress());
         city_txtView.setText(customer.getCity());
         postal_txtView.setText(customer.getPostalCode());
-//        try{
-//            Toast.makeText(getApplicationContext(), CURCUSTOMER.toString(), Toast.LENGTH_LONG).show();
-//        } catch (Exception e){
-//            Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
-//        }
-//        try {
-//            customerViewModel.getAllCustomers().observe(this, new Observer<List<Customer>>() {
-//                @Override
-//                public void onChanged(List<Customer> customers) {
-//                    Customer customer = customers.get(customers.indexOf(CURCUSTOMER));
-//                    id_txtView.setText(customer.getEmail());
-//                    //pass_txtView.setText(customer.getPassword());
-//                    //confPass_txtView.setText(customer.getConfirmPassword());
-//                    fname_txtView.setText(customer.getFirstname());
-//                    lname_txtView.setText(customer.getLastname());
-//                    addr_txtView.setText(customer.getAddress());
-//                    city_txtView.setText(customer.getCity());
-//                    postal_txtView.setText(customer.getPostalCode());
-//                }
-//            });
-//        } catch (Exception e){
-//            Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
-//        }
 
         // Manage Delete button
         Button deleteBtn = findViewById(R.id.accAct_del_btn);
         deleteBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                /* DEBUG USE */
-//                // check isFill method
-//                if (isFilled() && customer.getPassword().equals(confPass_txtView.getText().toString()))
-//                    Toast.makeText(getApplicationContext(), ""+isFilled(), Toast.LENGTH_LONG).show();
-//                else
-//                    Toast.makeText(getApplicationContext(), "says it's empty", Toast.LENGTH_LONG).show();
-//                /* DEBUG FIELD END */
 
                 Boolean filled = isFilled();
                 if (filled)
@@ -151,7 +118,6 @@ public class MyAccountActivity extends AppCompatActivity {
 
     private void updateCustomer(){
         customer = new Customer(
-//                "aaa","aaa","aaa","aaa","aaa","aaa","aaa","aaa"
                 (int) customer.getCustId(),
                 pass_txtView.getText().toString(), pass_txtView.getText().toString(),
                 fname_txtView.getText().toString(), lname_txtView.getText().toString(),
@@ -177,7 +143,6 @@ public class MyAccountActivity extends AppCompatActivity {
                 prefEditor.putString("user_post", customer.getPostalCode());
                 prefEditor.putInt("user_custid", customer.getCustId());
                 prefEditor.commit();
-                //Toast.makeText(getApplicationContext(), customer.toString(), Toast.LENGTH_SHORT).show();
             } catch (Exception e) {
                 Toast.makeText(getApplicationContext(), "insert error: "+e.getMessage(), Toast.LENGTH_LONG).show();
             }
@@ -213,7 +178,6 @@ public class MyAccountActivity extends AppCompatActivity {
     }
 
     private boolean isFilled(){
-//        Toast.makeText(getApplicationContext(), ""+(postal_txtView.getText() == null || postal_txtView.getText().toString().isEmpty()), Toast.LENGTH_SHORT).show();
         if (
                 (id_txtView.getText().toString().isEmpty()) ||
                 (addr_txtView.getText().toString().isEmpty()) ||
@@ -232,5 +196,4 @@ public class MyAccountActivity extends AppCompatActivity {
     }
 }
 
-// DONE: Fix isFilled
 // TODO: retrieve and implement public method checkValid from Registration activity

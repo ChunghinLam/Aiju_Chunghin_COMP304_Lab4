@@ -17,6 +17,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.aiju_chunghin_comp304_lab4.Models.Movie;
 import com.example.aiju_chunghin_comp304_lab4.ViewModels.MovieViewModel;
@@ -49,14 +50,11 @@ public class MainActivity extends AppCompatActivity {
                 movieListView.setAdapter(adapter);
                 movieListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                            String value = (String)parent.getItemAtPosition(position);
                         Intent intent = new Intent(MainActivity.this, TicketActivity.class);
-//                            model.getAllMovies().observe();
-
                         intent.putExtra("movieId", position);
-
                         String date = getApplicationContext().getString(R.string.showdate_1113);
                         intent.putExtra("movieShowDate", date.toString());
+
                         startActivity(intent);
                     }
                 });
@@ -65,16 +63,12 @@ public class MainActivity extends AppCompatActivity {
 
         // if is login, show username, else, show welcome guest
         TextView tvWelcome = findViewById(R.id.tvWelcome);
-//        SharedPreferences pref = getApplicationContext().getSharedPreferences("pref", 0);
         SharedPreferences pref = getSharedPreferences("accountPref", MODE_PRIVATE);
 
         /* INNOVATION */
         String userName = pref.getString("user_email", "Guest");
-//        Toast.makeText(getApplicationContext(), 1+userName, Toast.LENGTH_SHORT).show();
         userName = userName.replaceAll("(.*)(@.*)", "$1");
-//        Toast.makeText(getApplicationContext(), 2+userName, Toast.LENGTH_SHORT).show();
         tvWelcome.setText(tvWelcome.getText()+" "+userName);
-//        tvWelcome.setText(tvWelcome.getText()+" "+pref.getString("user_email", "Guest"));
 
         /* INNOVATION */
         // View visibility control
@@ -86,59 +80,6 @@ public class MainActivity extends AppCompatActivity {
 //            loggedView.setVisibility(View.VISIBLE);
 //        }
 
-        // login button handling
-//        Button btnLogin = findViewById(R.id.btnLogin);
-//        btnLogin.setOnClickListener(new View.OnClickListener() {
-//            public void onClick(View v) {
-//                Intent login = new Intent(MainActivity.this, LoginActivity.class);
-////                finish();
-////                startActivity(getIntent());
-//                startActivity(login);
-//            }
-//        });
-
-        // register button handling
-//        Button btnRegister = findViewById(R.id.btnRegister);
-//        btnRegister.setOnClickListener(new View.OnClickListener() {
-//            public void onClick(View v) {
-//                Intent register = new Intent(MainActivity.this, RegistrationActivity.class);
-//                finish();
-//                startActivity(register);
-//            }
-//        });
-
-        // logout button handling
-//        Button btnLogout = findViewById(R.id.btn_logout);
-//        btnLogout.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                SharedPreferences pref = getSharedPreferences("accountPref", MODE_PRIVATE);
-//                SharedPreferences.Editor prefEditor = pref.edit();
-//                prefEditor.remove("user_email");
-//                prefEditor.remove("user_password");
-//                prefEditor.remove("user_fname");
-//                prefEditor.remove("user_lname");
-//                prefEditor.remove("user_addr");
-//                prefEditor.remove("user_city");
-//                prefEditor.remove("user_post");
-//                prefEditor.remove("user_custid");
-//                prefEditor.commit();
-//
-//                finish();
-//                startActivity(getIntent());
-//            }
-//        });
-
-        // account button handling
-//        Button btnAccount = findViewById(R.id.btn_account);
-//        btnAccount.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent account = new Intent(MainActivity.this, AccountActivity.class);
-//                finish();
-//                startActivity(account);
-//            }
-//        });
     }
 
     @Override
@@ -260,8 +201,7 @@ public class MainActivity extends AppCompatActivity {
 
         }
         catch (Exception ex) {
-//            TextView tvErrorMsg = findViewById(R.id.tvErrorMsg);
-//            tvErrorMsg.setText(ex.getMessage());
+            Toast.makeText(getApplicationContext(), ex.getMessage(), Toast.LENGTH_LONG).show();
         }
     }
 }
