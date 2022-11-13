@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        /* INNOVATION */
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -274,7 +275,7 @@ public class MainActivity extends AppCompatActivity {
  * DONE The update customer activity will allow the customer to view / update customer information such password, address, city, postal code and email.                                                                                                                                                                                               [4 marks]
  * TODO The Ticket activity will allow a customer to book a ticket. This information should be stored in the Ticket table.    [4 marks]
  * TODO The ticket view activity will allow the customer to view /print or cancel the ticket.                                      [6 marks]
- * TODO Use Shared Preferences to store user name after successful login and publish this user name as a welcome message in the ticket activity.
+ * DONE Use Shared Preferences to store user name after successful login and publish this user name as a welcome message in the ticket activity.
  * *  TODO Provide a friendly and easy to navigate UI. Use images and image buttons.                                                  [4 marks]
          Hint: Innovative features
  * TODO Innovations:
@@ -285,4 +286,8 @@ public class MainActivity extends AppCompatActivity {
          You can add more fields to Ticket table.
          OR
          any other innovation!
+         *  get user name based on email
+         *  visible control (not used but once implemented and worked)
+         *  initially set current information in input view
+         *  Stay in day mode (disabled dark/night mode)
  */

@@ -168,5 +168,5 @@ public class RegistrationActivity extends AppCompatActivity {
     }
 }
 
-// TODO: Decline duplicate email account
-// TODO: Check if input is valid or not
+// DONE: Decline duplicate email account
+// DONE: Check if input is valid or not
