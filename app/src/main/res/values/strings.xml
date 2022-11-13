@@ -16,6 +16,8 @@
     <string name="confPass_label">Confirm your Password: </string>
     <string name="confPass_curPass_label">Type your current Password:</string>
     <string name="input_hint">Type here</string>
+    <string name="my_ticket_def">No ticket purchased yet.</string>
+    <string name="my_ticket_head">My Tickets:</string>
 
     <!-- messages -->
     <string name="msg_select_showtime">Please select the number of tickets and showtime</string>
