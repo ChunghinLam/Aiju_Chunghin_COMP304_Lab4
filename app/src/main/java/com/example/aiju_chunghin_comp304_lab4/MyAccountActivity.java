@@ -113,7 +113,8 @@ public class MyAccountActivity extends AppCompatActivity {
         confirmBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (customer.getPassword().equals(confPass_txtView.getText().toString())) {
+                Boolean filled = isFilled();
+                if (filled && customer.getPassword().equals(confPass_txtView.getText().toString())) {
                     try {
                         updateCustomer();
 
