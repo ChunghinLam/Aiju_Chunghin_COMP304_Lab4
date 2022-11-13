@@ -215,4 +215,4 @@ public class MyAccountActivity extends AppCompatActivity {
 }
 
 // DONE: Fix isFilled
-// TODO: Fix
+// TODO: retrieve and implement public method checkValid from Registration activity

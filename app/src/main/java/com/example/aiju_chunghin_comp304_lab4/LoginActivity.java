@@ -136,4 +136,3 @@ public class LoginActivity extends AppCompatActivity {
     }
 }
 // DONE: Add modify/delete account function
-// TODO: Decline duplicate email account
