@@ -100,12 +100,15 @@ public class MyAccountActivity extends AppCompatActivity {
 //                /* DEBUG FIELD END */
 
                 Boolean filled = isFilled();
-                if (filled && customer.getPassword().equals(confPass_txtView.getText().toString())) {
-                    deleteCustomer(customer);
+                if (filled)
+                    if (customer.getPassword().equals(confPass_txtView.getText().toString())) {
+                        deleteCustomer(customer);
 
-                    Toast.makeText(getApplicationContext(), R.string.good_bye_msg, Toast.LENGTH_LONG).show();
-                    backMain();
-                }
+                        Toast.makeText(getApplicationContext(), R.string.good_bye_msg, Toast.LENGTH_LONG).show();
+                        backMain();
+                    }
+                    else
+                        Toast.makeText(getApplicationContext(), R.string.dif_pass_msg, Toast.LENGTH_LONG).show();
             }
         });
         // Manage Confirm button
@@ -113,15 +116,19 @@ public class MyAccountActivity extends AppCompatActivity {
         confirmBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (customer.getPassword().equals(confPass_txtView.getText().toString())) {
-                    try {
-                        updateCustomer();
+                Boolean filled = isFilled();
+                if (filled)
+                    if (customer.getPassword().equals(confPass_txtView.getText().toString())) {
+                        try {
+                            updateCustomer();
 
-                        backMain();
-                    } catch (Exception e) {
-                        Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+                            backMain();
+                        } catch (Exception e) {
+                            Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+                        }
                     }
-                }
+                    else
+                        Toast.makeText(getApplicationContext(), R.string.dif_pass_msg, Toast.LENGTH_LONG).show();
             }
         });
 
@@ -146,7 +153,7 @@ public class MyAccountActivity extends AppCompatActivity {
         customer = new Customer(
 //                "aaa","aaa","aaa","aaa","aaa","aaa","aaa","aaa"
                 (int) customer.getCustId(),
-                pass_txtView.getText().toString(), confPass_txtView.getText().toString(),
+                pass_txtView.getText().toString(), pass_txtView.getText().toString(),
                 fname_txtView.getText().toString(), lname_txtView.getText().toString(),
                 addr_txtView.getText().toString(), city_txtView.getText().toString(), postal_txtView.getText().toString(),
                 id_txtView.getText().toString()
@@ -159,6 +166,17 @@ public class MyAccountActivity extends AppCompatActivity {
                         customerViewModel.update(customer);
                     }
                 });
+                SharedPreferences pref = getSharedPreferences("accountPref", MODE_PRIVATE);
+                SharedPreferences.Editor prefEditor = pref.edit();
+                prefEditor.putString("user_email", customer.getEmail());
+                prefEditor.putString("user_password", customer.getPassword());
+                prefEditor.putString("user_fname", customer.getFirstname());
+                prefEditor.putString("user_lname", customer.getLastname());
+                prefEditor.putString("user_addr", customer.getAddress());
+                prefEditor.putString("user_city", customer.getCity());
+                prefEditor.putString("user_post", customer.getPostalCode());
+                prefEditor.putInt("user_custid", customer.getCustId());
+                prefEditor.commit();
                 //Toast.makeText(getApplicationContext(), customer.toString(), Toast.LENGTH_SHORT).show();
             } catch (Exception e) {
                 Toast.makeText(getApplicationContext(), "insert error: "+e.getMessage(), Toast.LENGTH_LONG).show();
