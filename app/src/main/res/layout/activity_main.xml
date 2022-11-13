@@ -23,45 +23,6 @@
             android:textStyle="bold"
             android:maxLines="2" />
 
-<!--        <View-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_height="0dp"-->
-<!--            android:layout_weight="1" />-->
-<!--        <LinearLayout-->
-<!--            android:id="@+id/main_guest"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content">-->
-
-<!--            <Button-->
-<!--                android:id="@+id/btnLogin"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="@string/btnLogin"-->
-<!--                android:layout_marginRight="@dimen/def_margin" />-->
-
-<!--            <Button-->
-<!--                android:id="@+id/btnRegister"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="@string/btnRegister" />-->
-<!--        </LinearLayout>-->
-<!--        <LinearLayout-->
-<!--            android:id="@+id/main_loggedin"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:visibility="gone">-->
-<!--            <Button-->
-<!--                android:id="@+id/btn_logout"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="@string/btn_logout"-->
-<!--                android:layout_marginRight="@dimen/def_margin"/>-->
-<!--            <Button-->
-<!--                android:id="@+id/btn_account"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="@string/btn_account"/>-->
-<!--        </LinearLayout>-->
     </LinearLayout>
 
     <LinearLayout
