@@ -2,6 +2,7 @@ package com.example.aiju_chunghin_comp304_lab4;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -27,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -267,7 +269,7 @@ public class MainActivity extends AppCompatActivity {
  * DONE The main activity that handles the navigation to book a movie ticket.
  * * TODO This activity will further add the movie details (movieId and movieName to the Movie Table  (use hardcoded values / without input forms).                           [5 marks]
  * DONE The login activity will allow the customer to login for existing customer and register for new customers using a link. Use email as user name with password.
- * * TODO Login credential check involves matching the user inputs with the login details available in the Customer table.                                                                                                                                                                                                                                   [3 marks]
+ * * DONE Login credential check involves matching the user inputs with the login details available in the Customer table.                                                                                                                                                                                                                                   [3 marks]
  * DONE The registration activity will allow the customer to input customer information and this information will be stored in the customer table.                                                                                                                                                                                                       [4 marks]
  * DONE The update customer activity will allow the customer to view / update customer information such password, address, city, postal code and email.                                                                                                                                                                                               [4 marks]
  * TODO The Ticket activity will allow a customer to book a ticket. This information should be stored in the Ticket table.    [4 marks]
