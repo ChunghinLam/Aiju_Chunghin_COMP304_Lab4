@@ -45,7 +45,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="@string/pass_label"
+            android:hint="@string/confPass_curPass_label"
             android:inputType="textPassword" />
 
     </com.google.android.material.textfield.TextInputLayout>

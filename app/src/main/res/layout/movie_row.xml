@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="180dp"
+    android:layout_height="@dimen/row_height"
     android:orientation="horizontal">
 
     <ImageView
         android:id="@+id/ivMovieAvatar"
-        android:layout_width="150dp"
+        android:layout_width="@dimen/main_movie_poster_width"
         android:layout_height="match_parent"
         android:src="@drawable/ic_launcher_foreground" />
 
@@ -20,8 +20,7 @@
             android:id="@+id/tvMovieName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:textSize="20dp"
+            android:theme="@style/movie_title"
             android:text="Movie Name?"/>
 
         <TextView

@@ -2,6 +2,7 @@ package com.example.aiju_chunghin_comp304_lab4;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -27,6 +28,8 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        /* INNOVATION */
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -191,6 +194,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void doLogin() {
         Intent login = new Intent(MainActivity.this, LoginActivity.class);
+        finish();
         startActivity(login);
     }
 
@@ -209,6 +213,7 @@ public class MainActivity extends AppCompatActivity {
         prefEditor.remove("user_custid");
         prefEditor.commit();
 
+        finish();
         startActivity(getIntent());
     }
 
@@ -260,3 +265,29 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 }
+
+/* REQUIREMENTS *
+ * DONE The main activity that handles the navigation to book a movie ticket.
+ * * TODO This activity will further add the movie details (movieId and movieName to the Movie Table  (use hardcoded values / without input forms).                           [5 marks]
+ * DONE The login activity will allow the customer to login for existing customer and register for new customers using a link. Use email as user name with password.
+ * * DONE Login credential check involves matching the user inputs with the login details available in the Customer table.                                                                                                                                                                                                                                   [3 marks]
+ * DONE The registration activity will allow the customer to input customer information and this information will be stored in the customer table.                                                                                                                                                                                                       [4 marks]
+ * DONE The update customer activity will allow the customer to view / update customer information such password, address, city, postal code and email.                                                                                                                                                                                               [4 marks]
+ * TODO The Ticket activity will allow a customer to book a ticket. This information should be stored in the Ticket table.    [4 marks]
+ * TODO The ticket view activity will allow the customer to view /print or cancel the ticket.                                      [6 marks]
+ * DONE Use Shared Preferences to store user name after successful login and publish this user name as a welcome message in the ticket activity.
+ * *  TODO Provide a friendly and easy to navigate UI. Use images and image buttons.                                                  [4 marks]
+         Hint: Innovative features
+ * TODO Innovations:
+         You can cancel the tickets 48 hours before the show date/time (date validation)
+         OR
+         You can add more movie details to the movie table such as actor, director, release year or language.
+         OR
+         You can add more fields to Ticket table.
+         OR
+         any other innovation!
+         *  get user name based on email
+         *  visible control (not used but once implemented and worked)
+         *  initially set current information in input view
+         *  Stay in day mode (disabled dark/night mode)
+ */

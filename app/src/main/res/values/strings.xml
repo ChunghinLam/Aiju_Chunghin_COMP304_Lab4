@@ -14,7 +14,10 @@
     <string name="id_label">Your email address: </string>
     <string name="pass_label">Password: </string>
     <string name="confPass_label">Confirm your Password: </string>
+    <string name="confPass_curPass_label">Type your current Password:</string>
     <string name="input_hint">Type here</string>
+    <string name="my_ticket_def">No ticket purchased yet.</string>
+    <string name="my_ticket_head">My Tickets:</string>
 
     <!-- messages -->
     <string name="msg_select_showtime">Please select the number of tickets and showtime</string>
@@ -31,7 +34,9 @@
     <string name="use_of_terms">As registered, we assume that you have read, understand, and agree on our use of terms.</string>
     <string name="dif_pass_msg">You have entered wrong password in confirm-password column. Please re-enter correctly.</string>
     <string name="faital_login">You have entered wrong credential information. Please confirm your ID and password.</string>
+    <string name="invalid_input_msg">You have entered invalid email or postal code.\n(Example: xxx@example.com, A1B C4D)</string>
     <string name="msg_login_ok">Login as %s successfully!</string>
+    <string name="email_used_msg">Your email have already in use!</string>
     <string name="unfilled_msg">Please fill all the column</string>
     <string name="good_bye_msg">Thank you for using our app.</string>
     <string name="msg_ticket_price">Price: $</string>

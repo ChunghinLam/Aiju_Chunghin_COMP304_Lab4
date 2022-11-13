@@ -10,7 +10,6 @@ public class Movie {
     @NotNull
     @PrimaryKey(autoGenerate = true)
     public int movieId;
-
     public String movieName;
 
     public Movie(String movieName) {

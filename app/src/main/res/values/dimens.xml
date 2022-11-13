@@ -4,6 +4,8 @@
     <dimen name="input_height">24pt</dimen>
 
     <dimen name="inner_movie_poster_height">300dp</dimen>
+    <dimen name="main_movie_poster_width">150dp</dimen>
+    <dimen name="row_height">180dp</dimen>
     <dimen name="header_size">20dp</dimen>
     <dimen name="header_layout_width">90pt</dimen>
     <dimen name="def_margin">3pt</dimen>
