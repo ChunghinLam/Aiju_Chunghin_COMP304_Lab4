@@ -86,13 +86,19 @@ public class MyAccountActivity extends AppCompatActivity {
                 Boolean filled = isFilled();
                 if (filled)
                     if (customer.getPassword().equals(confPass_txtView.getText().toString())) {
-                        try {
-                            updateCustomer();
+                        if (RegistrationActivity.checkValid(id_txtView.getText().toString(),
+                                postal_txtView.getText().toString())) {
+                            try {
+                                updateCustomer();
 
-                            backMain();
-                        } catch (Exception e) {
-                            Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+                                backMain();
+                            } catch (Exception e) {
+                                Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+                            }
                         }
+                        else
+                            Toast.makeText(getApplicationContext(), R.string.invalid_input_msg,
+                                    Toast.LENGTH_LONG).show();
                     }
                     else
                         Toast.makeText(getApplicationContext(), R.string.dif_pass_msg, Toast.LENGTH_LONG).show();
@@ -195,5 +201,3 @@ public class MyAccountActivity extends AppCompatActivity {
             return true;
     }
 }
-
-// TODO: retrieve and implement public method checkValid from Registration activity
