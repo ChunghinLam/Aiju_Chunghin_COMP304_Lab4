@@ -26,7 +26,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class TicketActivity extends AppCompatActivity {
-    final int TICKET_PRICE = 9;
+    final int TICKET_PRICE = 9; // assumption
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,7 +69,6 @@ public class TicketActivity extends AppCompatActivity {
         npkTicket.setEnabled(true);
 
         SharedPreferences sharedPreferences = getSharedPreferences("MySharedPref", MODE_PRIVATE);
-        SharedPreferences.Editor myEdit = sharedPreferences.edit();
 
         TicketViewModel ticketModel = new ViewModelProvider(this).get(TicketViewModel.class);
         MovieViewModel movieModel = new ViewModelProvider(this).get(MovieViewModel.class);
@@ -99,13 +98,14 @@ public class TicketActivity extends AppCompatActivity {
 
                             SimpleDateFormat f = new SimpleDateFormat("MMM dd yyyy");
                             try {
-                                Date d = f.parse(movieShowDate + "2022");
+                                Date d = f.parse(movieShowDate + " 2022");
+
                                 millisec = d.getTime();
                             } catch (ParseException pe) {
                                 pe.printStackTrace();
                             }
-                            String[] movieList = getResources().getStringArray(R.array.movieList);
 
+                            String[] movieList = getResources().getStringArray(R.array.movieList);
                             Movie theMovie = movieModel.getMovieByName(movieList[movieId]);
 
                             SharedPreferences pref = getSharedPreferences("accountPref", MODE_PRIVATE);
@@ -120,7 +120,7 @@ public class TicketActivity extends AppCompatActivity {
                     });
                 }
                 catch (Exception ex) {
-
+                    Toast.makeText(getApplicationContext(), ex.getMessage(), Toast.LENGTH_LONG).show();
                 }
 
                 // return to main screen

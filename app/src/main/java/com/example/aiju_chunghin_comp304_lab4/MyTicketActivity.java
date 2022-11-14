@@ -34,9 +34,6 @@ public class MyTicketActivity extends AppCompatActivity {
         SharedPreferences pref = getSharedPreferences("accountPref", MODE_PRIVATE);
         Integer custId = pref.getInt("user_custid", 0);
 
-
-        // TODO: retrieve ticket information use custId
-//        CustomerViewModel customerViewModel = new ViewModelProvider(this).get(CustomerViewModel.class);
         MovieViewModel movieViewModel = new ViewModelProvider(this).get(MovieViewModel.class);
         TicketViewModel ticketViewModel = new ViewModelProvider(this).get(TicketViewModel.class);
 
@@ -45,26 +42,43 @@ public class MyTicketActivity extends AppCompatActivity {
                 @Override
                 public void onChanged(List<Ticket> tickets) {
                     if (tickets != null && !tickets.isEmpty()) {
-                        for (Ticket ticket : tickets) {
-                            TextView tvMovieName = findViewById(R.id.row2tv1);
+                            AsyncTask.execute(new Runnable() {
+                                @Override
+                                public void run() {
+                                    for (Ticket ticket : tickets) {
+                                        String movieName = movieViewModel.getMovieNameById(ticket.movieId);
 
-                            String movieName = movieViewModel.getMovieNameById(ticket.movieId);
-                            tvMovieName.setText(movieName);
-                            // TODO: fill the table
+                                        TextView tvMovieName = findViewById(R.id.row2tv1);
+                                        TextView tvShowDate = findViewById(R.id.row2tv2);
+                                        TextView tvShowTime = findViewById(R.id.row2tv3);
+                                        TextView tvNoOfTickets = findViewById(R.id.row2tv4);
+                                        TextView tvPrice = findViewById(R.id.row2tv5);
+
+                                        runOnUiThread(new Runnable() {
+                                            @Override
+                                            public void run() {
+                                                tvMovieName.setText(movieName);
+                                                tvShowDate.setText(ticket.getShowDate().toString());
+                                                tvShowTime.setText("");
+                                                tvNoOfTickets.setText(ticket.getNumberOfTickets() + "");
+                                                tvPrice.setText(ticket.getPrice() + "");
+                                            }
+                                        });
+                                    }
+                                }
+                            });
                         }
+                        else {
+                            // no tickets info
 
+                        }
                         TextView info = findViewById(R.id.ticket_info_wrap);
                         info.setText("");
                     }
-                    else {
-                        // no tickets info
-
-                    }
-                }
             });
         }
         catch (Exception ex) {
-
+            String s = ex.getMessage();
         }
     }
 }
